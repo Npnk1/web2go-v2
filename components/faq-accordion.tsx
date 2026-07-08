@@ -18,7 +18,7 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
         return (
           <div
             key={item.question}
-            className="rounded-lg border border-white/10 bg-white/[0.035] transition hover:border-white/20"
+            className="rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-slate-300"
           >
             <button
               type="button"
@@ -26,9 +26,9 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
               aria-expanded={isOpen}
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
             >
-              <span className="text-base font-semibold text-white">{item.question}</span>
+              <span className="text-base font-semibold text-slate-950">{item.question}</span>
               <ChevronDown
-                className={`h-5 w-5 shrink-0 text-signal-cyan transition ${
+                className={`h-5 w-5 shrink-0 text-blue-700 transition ${
                   isOpen ? "rotate-180" : ""
                 }`}
                 aria-hidden="true"
@@ -40,7 +40,7 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-sm leading-7 text-slate-300 sm:text-base">
+                <p className="px-5 pb-5 text-sm leading-7 text-slate-600 sm:text-base">
                   {item.answer}
                 </p>
               </div>

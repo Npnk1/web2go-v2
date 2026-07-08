@@ -1,74 +1,101 @@
 import Image from "next/image";
 import {
-  Activity,
-  Bot,
-  Braces,
+  BarChart3,
+  CheckCircle2,
+  FileJson2,
   Gauge,
-  GitBranch,
-  Network,
+  Link2,
   SearchCheck,
   ShieldCheck
 } from "lucide-react";
 
-const signalNodes = [
-  { label: "Entity clarity", icon: Network, tone: "text-signal-cyan" },
-  { label: "Schema", icon: Braces, tone: "text-signal-blue" },
-  { label: "Speed", icon: Gauge, tone: "text-signal-mint" },
-  { label: "Trust", icon: ShieldCheck, tone: "text-signal-violet" }
+const readinessRows = [
+  { label: "Service clarity", value: "Strong", icon: SearchCheck },
+  { label: "Schema coverage", value: "Mapped", icon: FileJson2 },
+  { label: "Performance base", value: "Fast", icon: Gauge },
+  { label: "Trust signals", value: "Visible", icon: ShieldCheck }
+];
+
+const tasks = [
+  "Clarify service pages",
+  "Add FAQPage schema",
+  "Tighten internal links",
+  "Improve consultation path"
 ];
 
 export function HeroVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-      <div className="absolute -inset-4 rounded-lg bg-gradient-to-br from-signal-blue/20 via-signal-cyan/10 to-signal-violet/20 blur-2xl" />
-      <div className="visual-frame relative overflow-hidden rounded-lg border border-white/10 bg-ink-850/70 shadow-card backdrop-blur">
-        <Image
-          src="/images/ai-visibility-dashboard.png"
-          alt="Abstract AI visibility dashboard with structured website signals"
-          width={1200}
-          height={630}
-          priority
-          className="h-auto w-full object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/20 to-transparent" />
-        <div className="scan-line absolute inset-x-0 top-0 h-1/2" />
-
-        <div className="absolute left-4 top-4 rounded-md border border-white/10 bg-ink-950/80 p-4 backdrop-blur-md sm:left-6 sm:top-6">
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-white">
-            <SearchCheck className="h-4 w-4 text-signal-cyan" aria-hidden="true" />
-            AI readiness map
+    <div className="relative mx-auto w-full max-w-2xl">
+      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60">
+        <div className="rounded-md border border-slate-200 bg-slate-950 p-4 text-white">
+          <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-300">
+                Web2Go Readiness Console
+              </p>
+              <h2 className="mt-2 text-xl font-semibold">Website visibility review</h2>
+            </div>
+            <div className="rounded-md bg-blue-500 px-3 py-1 text-xs font-semibold text-white">
+              In progress
+            </div>
           </div>
-          <div className="grid gap-2">
-            {signalNodes.map((node) => {
-              const Icon = node.icon;
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {readinessRows.map((item) => {
+              const Icon = item.icon;
               return (
-                <div key={node.label} className="flex items-center gap-3 text-xs text-slate-300">
-                  <span className="grid h-7 w-7 place-items-center rounded-md border border-white/10 bg-white/[0.05]">
-                    <Icon className={`h-4 w-4 ${node.tone}`} aria-hidden="true" />
-                  </span>
-                  <span>{node.label}</span>
+                <div key={item.label} className="rounded-md border border-white/10 bg-white/[0.06] p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <Icon className="h-5 w-5 text-blue-300" aria-hidden="true" />
+                    <span className="text-sm font-semibold text-white">{item.value}</span>
+                  </div>
+                  <p className="mt-4 text-sm text-slate-300">{item.label}</p>
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div className="absolute bottom-4 right-4 w-[min(74%,320px)] rounded-md border border-white/10 bg-ink-950/80 p-4 backdrop-blur-md sm:bottom-6 sm:right-6">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <span className="flex items-center gap-2 text-sm font-medium text-white">
-              <Bot className="h-4 w-4 text-signal-violet" aria-hidden="true" />
-              Answer structure
-            </span>
-            <Activity className="h-4 w-4 animate-pulseSoft text-signal-mint" aria-hidden="true" />
+        <div className="mt-4 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-md border border-slate-200 bg-slate-50 p-4">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm font-semibold text-slate-950">Priority work</p>
+              <BarChart3 className="h-5 w-5 text-blue-700" aria-hidden="true" />
+            </div>
+            <div className="mt-4 grid gap-3">
+              {tasks.map((task) => (
+                <div key={task} className="flex items-center gap-3 text-sm text-slate-700">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-blue-700" aria-hidden="true" />
+                  {task}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="space-y-2">
-            <div className="h-2 rounded bg-white/20" />
-            <div className="h-2 w-10/12 rounded bg-white/10" />
-            <div className="h-2 w-8/12 rounded bg-white/10" />
-          </div>
-          <div className="mt-4 flex items-center gap-2 text-xs text-slate-300">
-            <GitBranch className="h-4 w-4 text-signal-cyan" aria-hidden="true" />
-            Content, schema, links, and trust aligned
+
+          <div className="overflow-hidden rounded-md border border-slate-200 bg-white">
+            <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3">
+              <p className="text-sm font-semibold text-slate-950">Audit snapshot</p>
+              <Link2 className="h-4 w-4 text-slate-400" aria-hidden="true" />
+            </div>
+            <div className="relative h-44 bg-slate-100">
+              <Image
+                src="/images/ai-visibility-dashboard.png"
+                alt="Muted website audit dashboard preview"
+                fill
+                priority
+                className="object-cover opacity-55 saturate-50"
+                sizes="(min-width: 1024px) 360px, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-white via-white/40 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 rounded-md border border-slate-200 bg-white/90 p-3 shadow-sm backdrop-blur">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Recommendation
+                </p>
+                <p className="mt-1 text-sm font-medium text-slate-950">
+                  Strengthen structure before scaling traffic.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
