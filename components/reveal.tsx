@@ -6,18 +6,13 @@ type RevealProps = {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  immediate?: boolean;
 };
 
-export function Reveal({ children, className = "", delay = 0, immediate = false }: RevealProps) {
+export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(immediate);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (immediate) {
-      return;
-    }
-
     const node = ref.current;
     if (!node) {
       return;
@@ -36,7 +31,7 @@ export function Reveal({ children, className = "", delay = 0, immediate = false 
     observer.observe(node);
 
     return () => observer.disconnect();
-  }, [immediate]);
+  }, []);
 
   return (
     <div
@@ -48,3 +43,4 @@ export function Reveal({ children, className = "", delay = 0, immediate = false 
     </div>
   );
 }
+

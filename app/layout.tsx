@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "Web2Go | AI Website Optimization for Serious Businesses",
+    title: "Web2Go | Make your website easier for AI to understand",
     description:
       "Premium website optimization for AI readability, search visibility, technical SEO, performance, trust, and conversion.",
     url: "/",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/images/ai-visibility-dashboard.png",
         width: 1200,
         height: 630,
-        alt: "Website audit dashboard preview for AI optimization"
+        alt: "Abstract AI visibility dashboard for website optimization"
       }
     ]
   },
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
-  colorScheme: "light"
+  themeColor: "#050713",
+  colorScheme: "dark"
 };
 
 export default function RootLayout({
@@ -79,3 +79,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -74,12 +74,14 @@ function validate(values: FormState): Errors {
 }
 
 export function ContactForm() {
+  const [values, setValues] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
 
   const hasErrors = useMemo(() => Object.keys(errors).length > 0, [errors]);
 
-  const clearError = (field: keyof FormState) => {
+  const update = (field: keyof FormState, value: string) => {
+    setValues((current) => ({ ...current, [field]: value }));
     if (errors[field]) {
       setErrors((current) => {
         const next = { ...current };
@@ -91,13 +93,6 @@ export function ContactForm() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const values = { ...initialState };
-
-    (Object.keys(values) as Array<keyof FormState>).forEach((field) => {
-      values[field] = String(formData.get(field) ?? "");
-    });
-
     const nextErrors = validate(values);
     setErrors(nextErrors);
 
@@ -111,77 +106,73 @@ export function ContactForm() {
   };
 
   return (
-    <form className="rounded-lg border border-white/10 bg-white p-5 text-slate-950 shadow-xl shadow-black/20 sm:p-6" onSubmit={onSubmit} noValidate>
-      <div className="mb-6 border-b border-slate-200 pb-5">
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-blue-700">
-          Consultation request
-        </p>
-        <p className="mt-2 text-sm leading-6 text-slate-600">
-          Tell us enough to understand the website, goal, and likely scope.
-        </p>
-      </div>
-
+    <form className="rounded-lg border border-white/10 bg-white/[0.04] p-5 shadow-card sm:p-6" onSubmit={onSubmit} noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Full name" name="fullName" error={errors.fullName} onChange={clearError} />
-        <Field label="Business name" name="businessName" error={errors.businessName} onChange={clearError} />
-        <Field label="Website URL" name="websiteUrl" error={errors.websiteUrl} onChange={clearError} placeholder="https://example.com" />
-        <Field label="Email" name="email" type="email" error={errors.email} onChange={clearError} />
-        <Field label="Phone optional" name="phone" type="tel" error={errors.phone} onChange={clearError} />
-        <Field label="Country" name="country" error={errors.country} onChange={clearError} />
+        <Field label="Full name" name="fullName" value={values.fullName} error={errors.fullName} onChange={update} />
+        <Field label="Business name" name="businessName" value={values.businessName} error={errors.businessName} onChange={update} />
+        <Field label="Website URL" name="websiteUrl" value={values.websiteUrl} error={errors.websiteUrl} onChange={update} placeholder="https://example.com" />
+        <Field label="Email" name="email" type="email" value={values.email} error={errors.email} onChange={update} />
+        <Field label="Phone optional" name="phone" type="tel" value={values.phone} error={errors.phone} onChange={update} />
+        <Field label="Country" name="country" value={values.country} error={errors.country} onChange={update} />
         <SelectField
           label="Business type"
           name="businessType"
+          value={values.businessType}
           error={errors.businessType}
-          onChange={clearError}
+          onChange={update}
           options={["Restaurant", "Hotel", "Clinic", "Law firm", "Real estate", "Local service", "Ecommerce", "Other"]}
         />
         <SelectField
           label="Main goal"
           name="mainGoal"
+          value={values.mainGoal}
           error={errors.mainGoal}
-          onChange={clearError}
+          onChange={update}
           options={["AI/search visibility", "New website", "Website redesign", "More leads", "Technical SEO", "Performance", "Booking flow"]}
         />
         <SelectField
           label="Budget range"
           name="budgetRange"
+          value={values.budgetRange}
           error={errors.budgetRange}
-          onChange={clearError}
+          onChange={update}
           options={["EUR 490 - 1,000", "EUR 1,900 - 4,000", "EUR 4,000 - 8,000", "EUR 8,000+", "Need guidance"]}
         />
         <SelectField
           label="Preferred contact"
           name="preferredContact"
+          value={values.preferredContact}
           error={errors.preferredContact}
-          onChange={clearError}
+          onChange={update}
           options={["Email", "Phone", "Video call", "WhatsApp"]}
         />
       </div>
 
       <div className="mt-4">
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-800">
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          onChange={() => clearError("message")}
+          value={values.message}
+          onChange={(event) => update("message", event.target.value)}
           rows={5}
           className={`field min-h-36 resize-y ${errors.message ? "field-error" : ""}`}
           placeholder="Tell us what you want the website to improve."
         />
-        {errors.message ? <p className="mt-2 text-sm text-rose-700">{errors.message}</p> : null}
+        {errors.message ? <p className="mt-2 text-sm text-rose-300">{errors.message}</p> : null}
       </div>
 
       {hasErrors ? (
-        <p className="mt-4 rounded-md border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+        <p className="mt-4 rounded-md border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
           Please fix the highlighted fields before sending.
         </p>
       ) : null}
 
       {submitted ? (
-        <div className="mt-4 flex items-start gap-3 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" aria-hidden="true" />
+        <div className="mt-4 flex items-start gap-3 rounded-md border border-signal-mint/30 bg-signal-mint/10 px-4 py-3 text-sm text-slate-100">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-signal-mint" aria-hidden="true" />
           <p>
             Thanks. Your consultation request is ready in the interface. A backend connection is still needed before production.
           </p>
@@ -199,27 +190,29 @@ export function ContactForm() {
 type FieldProps = {
   label: string;
   name: keyof FormState;
+  value: string;
   error?: string;
-  onChange: (name: keyof FormState) => void;
+  onChange: (name: keyof FormState, value: string) => void;
   type?: string;
   placeholder?: string;
 };
 
-function Field({ label, name, error, onChange, type = "text", placeholder }: FieldProps) {
+function Field({ label, name, value, error, onChange, type = "text", placeholder }: FieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-800">
+      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-200">
         {label}
       </label>
       <input
         id={name}
         name={name}
         type={type}
+        value={value}
         placeholder={placeholder}
-        onChange={() => onChange(name)}
+        onChange={(event) => onChange(name, event.target.value)}
         className={`field ${error ? "field-error" : ""}`}
       />
-      {error ? <p className="mt-2 text-sm text-rose-700">{error}</p> : null}
+      {error ? <p className="mt-2 text-sm text-rose-300">{error}</p> : null}
     </div>
   );
 }
@@ -227,22 +220,23 @@ function Field({ label, name, error, onChange, type = "text", placeholder }: Fie
 type SelectFieldProps = {
   label: string;
   name: keyof FormState;
+  value: string;
   error?: string;
-  onChange: (name: keyof FormState) => void;
+  onChange: (name: keyof FormState, value: string) => void;
   options: string[];
 };
 
-function SelectField({ label, name, error, onChange, options }: SelectFieldProps) {
+function SelectField({ label, name, value, error, onChange, options }: SelectFieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-800">
+      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-200">
         {label}
       </label>
       <select
         id={name}
         name={name}
-        defaultValue=""
-        onChange={() => onChange(name)}
+        value={value}
+        onChange={(event) => onChange(name, event.target.value)}
         className={`field ${error ? "field-error" : ""}`}
       >
         <option value="">Select one</option>
@@ -252,7 +246,8 @@ function SelectField({ label, name, error, onChange, options }: SelectFieldProps
           </option>
         ))}
       </select>
-      {error ? <p className="mt-2 text-sm text-rose-700">{error}</p> : null}
+      {error ? <p className="mt-2 text-sm text-rose-300">{error}</p> : null}
     </div>
   );
 }
+
