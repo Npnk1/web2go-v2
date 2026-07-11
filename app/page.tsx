@@ -14,7 +14,6 @@ import {
   Globe2,
   Layers3,
   LineChart,
-  Link2,
   MapPinned,
   MousePointerClick,
   PanelsTopLeft,
@@ -42,21 +41,25 @@ const trustPoints = [
 
 const problemItems = [
   {
+    icon: BrainCircuit,
     title: "AI systems cannot read the business clearly",
     description:
       "Services, locations, proof, and company details are often buried in vague pages or inconsistent layouts."
   },
   {
+    icon: Search,
     title: "Search foundations are weak",
     description:
       "Missing schema, unclear metadata, thin service pages, and poor internal links make discovery harder."
   },
   {
+    icon: ShieldCheck,
     title: "Trust signals are scattered",
     description:
       "Reviews, expertise, policies, team details, examples, and contact paths need a clearer structure."
   },
   {
+    icon: MousePointerClick,
     title: "Visitors do not know what to do next",
     description:
       "Slow pages, generic copy, and weak lead capture leave qualified visitors without a strong next step."
@@ -193,36 +196,42 @@ const processSteps = [
   {
     step: "01",
     title: "Discover",
+    deliverable: "Business and website brief",
     description:
       "Clarify the business, services, audience, locations, competitors, existing content, and commercial goals."
   },
   {
     step: "02",
     title: "Audit",
+    deliverable: "Prioritized issue map",
     description:
       "Review AI readability, SEO foundations, page structure, performance, conversion paths, and trust signals."
   },
   {
     step: "03",
     title: "Strategy",
+    deliverable: "Page, schema, and lead-flow plan",
     description:
       "Define the site map, priority pages, schema plan, messaging angle, lead flow, and launch scope."
   },
   {
     step: "04",
     title: "Structure",
+    deliverable: "Content and entity model",
     description:
       "Build the content hierarchy, internal links, service blocks, FAQ logic, metadata, and structured data model."
   },
   {
     step: "05",
     title: "Design & Build",
+    deliverable: "Responsive website implementation",
     description:
       "Create a fast, responsive website with premium UI, clean code, accessibility, and clear conversion paths."
   },
   {
     step: "06",
     title: "Launch & Improve",
+    deliverable: "Validation checklist and next actions",
     description:
       "Ship the site, verify technical setup, connect measurement, and keep improving based on real signals."
   }
@@ -234,42 +243,48 @@ const exampleProjects = [
     title: "Local dining discovery concept",
     problem: "Menu, location, reservations, and reviews are spread across disconnected pages.",
     solution: "A structured site with menu schema, local pages, reservation CTAs, and clear cuisine positioning.",
-    outcome: "Intended outcome: easier discovery and a clearer path from search to booking."
+    outcome: "Intended outcome: easier discovery and a clearer path from search to booking.",
+    tags: ["Local SEO", "Menu schema", "Booking UX"]
   },
   {
     industry: "Hotel",
     title: "Boutique stay visibility concept",
     problem: "Room types, amenities, local attractions, and direct booking value are unclear.",
     solution: "A fast hotel site with structured amenities, local intent content, FAQs, and direct booking flow.",
-    outcome: "Intended outcome: better understanding of the property and less reliance on vague brochure pages."
+    outcome: "Intended outcome: better understanding of the property and less reliance on vague brochure pages.",
+    tags: ["Amenities", "Direct booking", "Performance"]
   },
   {
     industry: "Dental Clinic",
     title: "Clinic trust and service concept",
     problem: "Treatment pages are thin and the patient journey does not build confidence.",
     solution: "Service pages, FAQ answers, doctor trust signals, review structure, and appointment lead capture.",
-    outcome: "Intended outcome: stronger patient confidence and clearer appointment requests."
+    outcome: "Intended outcome: stronger patient confidence and clearer appointment requests.",
+    tags: ["Trust signals", "FAQs", "Appointments"]
   },
   {
     industry: "Law Firm",
     title: "Practice-area clarity concept",
     problem: "Practice areas are mixed together and expertise signals are difficult to parse.",
     solution: "Structured practice pages, clear attorney information, FAQs, internal links, and local schema.",
-    outcome: "Intended outcome: more understandable expertise without exaggerated legal marketing."
+    outcome: "Intended outcome: more understandable expertise without exaggerated legal marketing.",
+    tags: ["Practice pages", "Local schema", "Authority"]
   },
   {
     industry: "Real Estate Agency",
     title: "Property trust system concept",
     problem: "Listings, areas served, valuation content, and contact paths do not connect.",
     solution: "Area pages, listing UX, analytics, lead routing, and content blocks for buyers and sellers.",
-    outcome: "Intended outcome: better local relevance and smoother inquiry paths."
+    outcome: "Intended outcome: better local relevance and smoother inquiry paths.",
+    tags: ["Area pages", "Lead routing", "Analytics"]
   },
   {
     industry: "Local Service Business",
     title: "Service-area growth concept",
     problem: "The site does not explain services, coverage areas, proof, or urgency clearly.",
     solution: "Service clusters, service-area pages, trust sections, quote forms, and conversion tracking.",
-    outcome: "Intended outcome: clearer relevance for customers searching by service and location."
+    outcome: "Intended outcome: clearer relevance for customers searching by service and location.",
+    tags: ["Service clusters", "Quote forms", "Tracking"]
   }
 ];
 
@@ -279,14 +294,14 @@ const pricing = [
     price: "from EUR 490",
     description:
       "For businesses that already have a website and want to understand what blocks AI and search visibility.",
-    includes: ["AI/search readability review", "Technical SEO checks", "Schema and metadata review", "Prioritized action plan"]
+    includes: ["AI/search readability review", "Technical SEO checks", "Schema and metadata review", "Prioritized action plan", "Implementation estimate"]
   },
   {
     name: "AI-Ready Website",
     price: "from EUR 1,900",
     description:
       "For businesses that need a modern website built with AI readability, SEO, speed, and conversion in mind.",
-    includes: ["Site strategy and structure", "Responsive premium design", "Next.js build", "Core SEO and schema setup"],
+    includes: ["Site strategy and structure", "Responsive premium design", "Next.js build", "Core SEO and schema setup", "Lead capture flow"],
     featured: true
   },
   {
@@ -294,7 +309,7 @@ const pricing = [
     price: "Custom / monthly",
     description:
       "For businesses that want ongoing optimization, content structure, analytics, SEO/GEO improvements, and conversion work.",
-    includes: ["Monthly optimization plan", "New content architecture", "Analytics review", "Conversion improvements"]
+    includes: ["Monthly optimization plan", "New content architecture", "Analytics review", "Conversion improvements", "Technical maintenance"]
   }
 ];
 
@@ -371,19 +386,19 @@ export default function Home() {
       <Header />
       <main id="top" className="relative overflow-hidden">
         <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(79,140,255,0.20),transparent_30%),radial-gradient(circle_at_82%_22%,rgba(32,216,210,0.16),transparent_28%),linear-gradient(180deg,#050713_0%,#080b18_45%,#050713_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(91,141,239,0.16),transparent_30%),radial-gradient(circle_at_82%_22%,rgba(53,201,214,0.10),transparent_28%),linear-gradient(180deg,#050713_0%,#080b18_45%,#050713_100%)]" />
           <div className="absolute inset-0 bg-grid opacity-45" />
         </div>
 
-        <section className="relative min-h-screen px-5 pb-20 pt-32 sm:px-6 lg:px-8 lg:pt-36">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]">
+        <section className="relative min-h-[92svh] px-5 pb-20 pt-32 sm:px-6 lg:px-8 lg:pt-36">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
             <Reveal className="max-w-3xl">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-200">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.045] px-3 py-2 text-sm text-slate-200 shadow-panel">
                 <Sparkles className="h-4 w-4 text-signal-cyan" aria-hidden="true" />
-                AI-ready websites for modern businesses
+                AI/search optimization for serious business websites
               </div>
-              <h1 className="text-balance text-5xl font-semibold leading-tight text-white sm:text-6xl lg:text-7xl">
-                Make your website the one AI understands
+              <h1 className="text-balance text-5xl font-semibold leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Make your website clearer for AI, search, and customers
               </h1>
               <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-slate-300 sm:text-xl">
                 Web2Go turns unclear business websites into structured, fast, trustworthy digital assets that are easier for people, search engines, and AI systems to understand.
@@ -399,7 +414,7 @@ export default function Home() {
                   <span>Explore Services</span>
                 </a>
               </div>
-              <div className="mt-9 grid gap-3 sm:grid-cols-2">
+              <div className="mt-9 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-2">
                 {trustPoints.map((point) => (
                   <div key={point} className="flex items-center gap-3 text-sm text-slate-300">
                     <span className="grid h-7 w-7 place-items-center rounded-md border border-signal-cyan/30 bg-signal-cyan/10">
@@ -416,7 +431,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="problem">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="problem">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -426,22 +441,25 @@ export default function Home() {
               />
             </Reveal>
             <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {problemItems.map((item, index) => (
+              {problemItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
                 <Reveal key={item.title} delay={index * 70}>
-                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-signal-cyan/30 hover:bg-white/[0.055]">
+                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-panel transition hover:-translate-y-1 hover:border-signal-cyan/30 hover:bg-white/[0.055]">
                     <div className="mb-5 grid h-10 w-10 place-items-center rounded-md border border-white/10 bg-ink-800 text-signal-cyan">
-                      <Search className="h-5 w-5" aria-hidden="true" />
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
                   </article>
                 </Reveal>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="solution">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="solution">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
               <Reveal>
@@ -461,7 +479,7 @@ export default function Home() {
                   const Icon = item.icon;
                   return (
                     <Reveal key={item.title} delay={index * 90}>
-                      <article className="rounded-lg border border-white/10 bg-white/[0.04] p-6 transition hover:border-signal-blue/40 hover:bg-white/[0.06]">
+                      <article className="rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-panel transition hover:border-signal-blue/40 hover:bg-white/[0.06]">
                         <div className="flex flex-col gap-5 sm:flex-row">
                           <div className="grid h-12 w-12 shrink-0 place-items-center rounded-md border border-white/10 bg-ink-800 text-signal-cyan">
                             <Icon className="h-6 w-6" aria-hidden="true" />
@@ -482,7 +500,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="services">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="services">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -496,12 +514,14 @@ export default function Home() {
                 const Icon = service.icon;
                 return (
                   <Reveal key={service.title} delay={(index % 3) * 80}>
-                    <article className="service-card group h-full rounded-lg border border-white/10 bg-white/[0.035] p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:border-signal-cyan/40 hover:bg-white/[0.055]">
+                    <article className="service-card group h-full min-h-[318px] rounded-lg border border-white/10 bg-white/[0.035] p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:border-signal-cyan/40 hover:bg-white/[0.055]">
                       <div className="flex items-start justify-between gap-4">
                         <div className="grid h-11 w-11 place-items-center rounded-md border border-white/10 bg-ink-800 text-signal-cyan transition group-hover:text-signal-mint">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </div>
-                        <ArrowRight className="h-5 w-5 text-slate-600 transition group-hover:translate-x-1 group-hover:text-signal-cyan" aria-hidden="true" />
+                        <span className="rounded-md border border-white/10 bg-white/[0.035] px-2 py-1 text-xs font-medium text-slate-500">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </div>
                       <h3 className="mt-7 text-xl font-semibold text-white">{service.title}</h3>
                       <p className="mt-3 text-sm leading-7 text-slate-300">{service.description}</p>
@@ -513,6 +533,10 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
+                      <div className="mt-6 flex items-center gap-2 text-xs font-medium text-slate-500 transition group-hover:text-signal-cyan">
+                        <span>Client output</span>
+                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+                      </div>
                     </article>
                   </Reveal>
                 );
@@ -521,7 +545,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="ai-optimization">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="ai-optimization">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <Reveal>
@@ -543,7 +567,7 @@ export default function Home() {
               <Reveal delay={120}>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {aiIncludes.map((item) => (
-                    <div key={item} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-200">
+                    <div key={item} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-200 shadow-panel">
                       <CheckCircle2 className="h-4 w-4 shrink-0 text-signal-cyan" aria-hidden="true" />
                       {item}
                     </div>
@@ -554,7 +578,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="process">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="process">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -566,9 +590,17 @@ export default function Home() {
             <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {processSteps.map((step, index) => (
                 <Reveal key={step.title} delay={(index % 3) * 80}>
-                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-6">
-                    <p className="text-sm font-semibold text-signal-cyan">{step.step}</p>
+                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-6 shadow-panel transition hover:border-signal-cyan/30 hover:bg-white/[0.05]">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm font-semibold text-signal-cyan">{step.step}</p>
+                      <span className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-slate-400">
+                        Deliverable
+                      </span>
+                    </div>
                     <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
+                    <p className="mt-3 rounded-md border border-signal-cyan/20 bg-signal-cyan/[0.08] px-3 py-2 text-sm font-medium text-signal-cyan">
+                      {step.deliverable}
+                    </p>
                     <p className="mt-3 text-sm leading-7 text-slate-300">{step.description}</p>
                   </article>
                 </Reveal>
@@ -577,7 +609,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="work">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="work">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -589,7 +621,7 @@ export default function Home() {
             <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {exampleProjects.map((project, index) => (
                 <Reveal key={project.title} delay={(index % 3) * 80}>
-                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-6 transition hover:border-signal-blue/40 hover:bg-white/[0.055]">
+                  <article className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-6 shadow-panel transition hover:border-signal-blue/40 hover:bg-white/[0.055]">
                     <div className="mb-5 flex items-center justify-between gap-3">
                       <span className="rounded-md border border-signal-cyan/25 bg-signal-cyan/10 px-3 py-1 text-sm text-signal-cyan">
                         {project.industry}
@@ -612,7 +644,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="mt-6 flex flex-wrap gap-2">
-                      {["AI SEO", "Schema", "Next.js", "Booking", "Analytics", "Performance"].map((tag) => (
+                      {project.tags.map((tag) => (
                         <span key={tag} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-slate-300">
                           {tag}
                         </span>
@@ -625,7 +657,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="pricing">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="pricing">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -638,9 +670,9 @@ export default function Home() {
               {pricing.map((tier, index) => (
                 <Reveal key={tier.name} delay={index * 90}>
                   <article
-                    className={`h-full rounded-lg border p-6 shadow-card ${
+                    className={`relative h-full rounded-lg border p-6 shadow-card ${
                       tier.featured
-                        ? "border-signal-cyan/40 bg-signal-cyan/[0.08]"
+                        ? "border-signal-cyan/45 bg-signal-cyan/[0.085]"
                         : "border-white/10 bg-white/[0.035]"
                     }`}
                   >
@@ -651,7 +683,7 @@ export default function Home() {
                       </div>
                       {tier.featured ? (
                         <span className="rounded-md border border-signal-mint/30 bg-signal-mint/10 px-3 py-1 text-sm text-signal-mint">
-                          Popular scope
+                          Recommended
                         </span>
                       ) : null}
                     </div>
@@ -669,7 +701,7 @@ export default function Home() {
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                     <p className="mt-4 text-xs leading-6 text-slate-500">
-                      Professional note: final price depends on scope, timeline, content, integrations, and technical requirements.
+                      Final price depends on scope, timeline, content, integrations, and technical requirements.
                     </p>
                   </article>
                 </Reveal>
@@ -678,7 +710,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="trust">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="trust">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <Reveal>
@@ -692,7 +724,7 @@ export default function Home() {
               <Reveal delay={120}>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {trustItems.map((item) => (
-                    <div key={item} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-200">
+                    <div key={item} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-200 shadow-panel">
                       <ShieldCheck className="h-5 w-5 shrink-0 text-signal-mint" aria-hidden="true" />
                       {item}
                     </div>
@@ -703,7 +735,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="faq">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="faq">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <SectionHeading
@@ -718,7 +750,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 py-24 sm:px-6 lg:px-8" id="contact">
+        <section className="section-divider px-5 py-24 sm:px-6 lg:px-8" id="contact">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <Reveal>
               <SectionHeading
@@ -782,23 +814,35 @@ export default function Home() {
               A digital studio for businesses that need clearer websites, stronger AI readability, technical SEO, trust, performance, and conversion.
             </p>
           </div>
-          <FooterColumn title="Services" links={["AI Optimization", "Technical SEO", "Structured Data", "Website Redesign"]} />
-          <FooterColumn title="Company" links={["Process", "Example Work", "Pricing", "FAQ"]} />
+          <FooterColumn
+            title="Services"
+            links={[
+              { label: "AI Optimization", href: "#ai-optimization" },
+              { label: "Technical SEO", href: "#services" },
+              { label: "Structured Data", href: "#services" },
+              { label: "Website Redesign", href: "#services" }
+            ]}
+          />
+          <FooterColumn
+            title="Company"
+            links={[
+              { label: "Process", href: "#process" },
+              { label: "Example Work", href: "#work" },
+              { label: "Pricing", href: "#pricing" },
+              { label: "FAQ", href: "#faq" }
+            ]}
+          />
           <div>
             <h3 className="text-sm font-semibold text-white">Contact</h3>
             <a href={`mailto:${siteConfig.email}`} className="mt-4 block text-sm text-slate-400 transition hover:text-white">
               {siteConfig.email}
             </a>
-            <div className="mt-5 flex gap-2">
-              {["LinkedIn", "X", "GitHub"].map((item) => (
-                <a key={item} href="#contact" className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-slate-400 transition hover:text-white">
-                  {item}
-                </a>
-              ))}
-            </div>
+            <a href="#contact" className="mt-5 inline-flex rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-300 transition hover:border-signal-cyan/35 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45">
+              Request consultation
+            </a>
             <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-500">
-              <a href="#contact" className="hover:text-slate-300">Privacy Policy</a>
-              <a href="#contact" className="hover:text-slate-300">Terms</a>
+              <a href="/privacy" className="hover:text-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45">Privacy Policy</a>
+              <a href="/terms" className="hover:text-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45">Terms</a>
             </div>
           </div>
         </div>
@@ -807,14 +851,20 @@ export default function Home() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({
+  title,
+  links
+}: {
+  title: string;
+  links: Array<{ label: string; href: string }>;
+}) {
   return (
     <div>
       <h3 className="text-sm font-semibold text-white">{title}</h3>
       <div className="mt-4 grid gap-3">
         {links.map((link) => (
-          <a key={link} href="#contact" className="text-sm text-slate-400 transition hover:text-white">
-            {link}
+          <a key={link.label} href={link.href} className="text-sm text-slate-400 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45">
+            {link.label}
           </a>
         ))}
       </div>

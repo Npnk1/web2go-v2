@@ -17,15 +17,16 @@ const config: Config = {
           700: "#172036"
         },
         signal: {
-          blue: "#4f8cff",
-          cyan: "#20d8d2",
-          violet: "#8f6cff",
-          mint: "#64f0b9"
+          blue: "#5b8def",
+          cyan: "#35c9d6",
+          violet: "#9b7cf4",
+          mint: "#6ee7b7"
         }
       },
       boxShadow: {
-        glow: "0 0 60px rgba(32, 216, 210, 0.16)",
-        card: "0 22px 60px rgba(0, 0, 0, 0.32)"
+        glow: "0 0 48px rgba(53, 201, 214, 0.14)",
+        card: "0 24px 70px rgba(0, 0, 0, 0.34)",
+        panel: "0 18px 48px rgba(0, 0, 0, 0.24)"
       },
       keyframes: {
         float: {

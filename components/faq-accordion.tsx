@@ -15,15 +15,20 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
     <div className="mx-auto grid max-w-4xl gap-3">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
+        const buttonId = `faq-button-${index}`;
+        const panelId = `faq-panel-${index}`;
+
         return (
           <div
             key={item.question}
-            className="rounded-lg border border-white/10 bg-white/[0.035] transition hover:border-white/20"
+            className="rounded-lg border border-white/10 bg-white/[0.035] shadow-panel transition hover:border-signal-cyan/25 hover:bg-white/[0.045]"
           >
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left"
+              id={buttonId}
+              className="flex w-full items-center justify-between gap-5 rounded-lg px-5 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
               aria-expanded={isOpen}
+              aria-controls={panelId}
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
             >
               <span className="text-base font-semibold text-white">{item.question}</span>
@@ -35,6 +40,10 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
               />
             </button>
             <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              aria-hidden={!isOpen}
               className={`grid transition-all duration-300 ${
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
               }`}
