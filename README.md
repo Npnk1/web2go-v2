@@ -1,6 +1,15 @@
 # Web2Go
 
-Premium Next.js website for Web2Go, focused on AI website optimization, GEO/LLM readiness, technical SEO, performance, trust, and conversion.
+Premium multilingual Next.js website for Web2Go, focused on AI website optimization, modern search visibility, technical SEO, performance, trust, and conversion.
+
+## Routes
+
+- English: `/en`
+- Dutch: `/nl`
+- Spanish: `/es`
+- Root `/` redirects to `/en`
+
+Localized legal pages are available at `/:locale/privacy` and `/:locale/terms`.
 
 ## Run locally
 
@@ -9,23 +18,33 @@ pnpm.cmd install
 pnpm.cmd dev
 ```
 
+Open `http://localhost:3000/en`.
+
 ## Validate
 
 ```bash
-pnpm.cmd typecheck
-pnpm.cmd build
+pnpm.cmd run typecheck
+pnpm.cmd run build
 ```
 
-## Run production build locally
+## Contact form
+
+The contact form posts to `/api/contact` and validates requests on the client and server.
+
+For production email delivery, copy `.env.example` to `.env.local` and configure:
 
 ```bash
-pnpm.cmd build
-pnpm.cmd start
+NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
+RESEND_API_KEY=...
+CONTACT_TO_EMAIL=...
+CONTACT_FROM_EMAIL=...
 ```
+
+If the Resend/contact environment variables are missing, the API returns a development-safe success response after validation and does not pretend to send email.
 
 ## Notes
 
-- The consultation form is frontend-only for now. Connect it to Resend, Supabase, Formspree, or another backend before production.
-- Canonical and contact URLs use safe placeholder domains in code until the real production domain and inbox are confirmed.
+- All visible page copy lives in `i18n/*.ts` dictionaries.
+- The language switcher preserves the current page and hash where possible, for example `/en#services` to `/nl#services`.
+- Canonicals, hreflang alternates, sitemap entries, and JSON-LD are localized.
 - If PowerShell blocks `pnpm`, use `pnpm.cmd` as shown above.
-

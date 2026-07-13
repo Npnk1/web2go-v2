@@ -21,19 +21,19 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
         return (
           <div
             key={item.question}
-            className="rounded-lg border border-white/10 bg-white/[0.035] shadow-panel transition hover:border-signal-cyan/25 hover:bg-white/[0.045]"
+            className="rounded-lg border border-white/10 bg-white/[0.035] shadow-panel transition hover:border-white/20 hover:bg-white/[0.045]"
           >
             <button
               type="button"
               id={buttonId}
-              className="flex w-full items-center justify-between gap-5 rounded-lg px-5 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-cyan/45 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
+              className="flex w-full items-center justify-between gap-5 rounded-lg px-5 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-blue/45 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
             >
               <span className="text-base font-semibold text-white">{item.question}</span>
               <ChevronDown
-                className={`h-5 w-5 shrink-0 text-signal-cyan transition ${
+                className={`h-5 w-5 shrink-0 text-signal-blue transition ${
                   isOpen ? "rotate-180" : ""
                 }`}
                 aria-hidden="true"

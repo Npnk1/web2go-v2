@@ -1,19 +1,28 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
+import { localePath, locales } from "@/i18n/locales";
+import { languageAlternates } from "@/i18n/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const routes = [
-    { path: "", priority: 1 },
+    { path: "/", priority: 1 },
     { path: "/privacy", priority: 0.4 },
     { path: "/terms", priority: 0.4 }
   ];
 
-  return routes.map((route) => ({
-    url: `${siteConfig.url}${route.path}`,
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: route.priority
-  }));
+  return locales.flatMap((locale) =>
+    routes.map((route) => ({
+      url: `${siteConfig.url}${localePath(locale, route.path)}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: route.priority,
+      alternates: {
+        languages: {
+          ...languageAlternates(route.path),
+          "x-default": `${siteConfig.url}${localePath("en", route.path)}`
+        }
+      }
+    }))
+  );
 }
-

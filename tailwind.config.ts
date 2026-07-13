@@ -4,55 +4,30 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./data/**/*.{js,ts,jsx,tsx,mdx}"
+    "./data/**/*.{js,ts,jsx,tsx,mdx}",
+    "./i18n/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
       colors: {
         ink: {
-          950: "#050713",
-          900: "#080b18",
-          850: "#0b1020",
-          800: "#101728",
-          700: "#172036"
+          950: "#050712",
+          900: "#090c16",
+          850: "#0d1220",
+          800: "#121827",
+          700: "#1a2233"
         },
         signal: {
-          blue: "#5b8def",
-          cyan: "#35c9d6",
-          violet: "#9b7cf4",
-          mint: "#6ee7b7"
+          blue: "#7fa7e6",
+          cyan: "#86b7c9",
+          violet: "#9f9ac7",
+          mint: "#9fc8b4"
         }
       },
       boxShadow: {
-        glow: "0 0 48px rgba(53, 201, 214, 0.14)",
-        card: "0 24px 70px rgba(0, 0, 0, 0.34)",
-        panel: "0 18px 48px rgba(0, 0, 0, 0.24)"
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translate3d(0, 0, 0)" },
-          "50%": { transform: "translate3d(0, -12px, 0)" }
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" }
-        },
-        scan: {
-          "0%": { transform: "translateY(-100%)", opacity: "0" },
-          "20%, 80%": { opacity: "0.35" },
-          "100%": { transform: "translateY(100%)", opacity: "0" }
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "0.55", transform: "scale(1)" },
-          "50%": { opacity: "0.9", transform: "scale(1.05)" }
-        }
-      },
-      animation: {
-        float: "float 7s ease-in-out infinite",
-        shimmer: "shimmer 12s ease infinite",
-        scan: "scan 5.5s ease-in-out infinite",
-        pulseSoft: "pulseSoft 4s ease-in-out infinite"
+        glow: "0 18px 42px rgba(0, 0, 0, 0.26)",
+        card: "0 24px 64px rgba(0, 0, 0, 0.30)",
+        panel: "0 16px 42px rgba(0, 0, 0, 0.22)"
       }
     }
   },

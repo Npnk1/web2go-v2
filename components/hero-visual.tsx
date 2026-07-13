@@ -1,77 +1,113 @@
-import Image from "next/image";
 import {
-  Activity,
-  Bot,
   Braces,
+  CheckCircle2,
+  FileText,
   Gauge,
   GitBranch,
   Network,
   SearchCheck,
   ShieldCheck
 } from "lucide-react";
+import type { Messages } from "@/i18n/types";
 
-const signalNodes = [
-  { label: "Entity clarity", icon: Network, tone: "text-signal-cyan" },
-  { label: "Schema", icon: Braces, tone: "text-signal-blue" },
-  { label: "Speed", icon: Gauge, tone: "text-signal-mint" },
-  { label: "Trust", icon: ShieldCheck, tone: "text-signal-violet" }
-];
+const rowIcons = [Network, Braces, Gauge, ShieldCheck];
 
-export function HeroVisual() {
+export function HeroVisual({ copy }: { copy: Messages["heroVisual"] }) {
   return (
     <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-      <div className="absolute -inset-4 rounded-xl bg-gradient-to-br from-signal-blue/10 via-signal-cyan/6 to-signal-violet/8 blur-2xl" />
-      <div className="visual-frame relative overflow-hidden rounded-xl border border-white/10 bg-ink-850/80 shadow-card backdrop-blur">
-        <Image
-          src="/images/ai-visibility-dashboard.webp"
-          alt="Website optimization dashboard showing AI readability, schema, performance, and trust signals"
-          width={1200}
-          height={630}
-          priority
-          sizes="(min-width: 1024px) 48vw, 100vw"
-          className="h-auto w-full object-cover opacity-55 saturate-[0.72] brightness-[0.82] contrast-[0.98]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/20 to-transparent" />
-        <div className="scan-line absolute inset-x-0 top-0 h-1/2" />
-
-        <div className="absolute left-3 top-3 max-w-[70%] rounded-md border border-white/10 bg-ink-950/85 p-3 shadow-panel backdrop-blur-md sm:left-6 sm:top-6 sm:max-w-none sm:p-4">
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-white">
-            <SearchCheck className="h-4 w-4 text-signal-cyan" aria-hidden="true" />
-            Readiness map
+      <div className="rounded-xl border border-white/10 bg-ink-850/95 p-4 shadow-card sm:p-5">
+        <div className="rounded-lg border border-white/10 bg-ink-950/65">
+          <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 sm:px-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                {copy.eyebrow}
+              </p>
+              <h2 className="mt-1 text-lg font-semibold text-white">{copy.title}</h2>
+            </div>
+            <div className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-right">
+              <p className="text-xs text-slate-500">{copy.scoreLabel}</p>
+              <p className="text-lg font-semibold text-slate-100">82/100</p>
+            </div>
           </div>
-          <div className="grid gap-2">
-            {signalNodes.map((node) => {
-              const Icon = node.icon;
-              return (
-                <div key={node.label} className="flex items-center gap-3 text-xs text-slate-300">
-                  <span className="grid h-7 w-7 place-items-center rounded-md border border-white/10 bg-white/[0.05]">
-                    <Icon className={`h-4 w-4 ${node.tone}`} aria-hidden="true" />
-                  </span>
-                  <span>{node.label}</span>
+
+          <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="border-b border-white/10 p-4 lg:border-b-0 lg:border-r sm:p-5">
+              <div className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-100">
+                <SearchCheck className="h-4 w-4 text-signal-blue" aria-hidden="true" />
+                {copy.readabilityTitle}
+              </div>
+              <div className="space-y-3">
+                {copy.rows.map((row, index) => {
+                  const Icon = rowIcons[index] || ShieldCheck;
+                  return (
+                    <div
+                      key={row.label}
+                      className="flex items-center justify-between gap-3 rounded-md border border-white/10 bg-white/[0.035] px-3 py-2.5"
+                    >
+                      <span className="flex items-center gap-3 text-sm text-slate-300">
+                        <Icon className="h-4 w-4 text-signal-blue" aria-hidden="true" />
+                        {row.label}
+                      </span>
+                      <span className="text-xs font-medium text-slate-400">{row.value}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="p-4 sm:p-5">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-slate-100">
+                  <GitBranch className="h-4 w-4 text-signal-blue" aria-hidden="true" />
+                  {copy.discoveryTitle}
                 </div>
-              );
-            })}
-          </div>
-        </div>
+                <span className="rounded-md border border-white/10 bg-white/[0.035] px-2 py-1 text-xs text-slate-500">
+                  {copy.reviewLabel}
+                </span>
+              </div>
 
-        <div className="absolute bottom-3 right-3 w-[min(76%,320px)] rounded-md border border-white/10 bg-ink-950/85 p-3 shadow-panel backdrop-blur-md sm:bottom-6 sm:right-6 sm:p-4">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <span className="flex items-center gap-2 text-sm font-medium text-white">
-              <Bot className="h-4 w-4 text-signal-violet" aria-hidden="true" />
-              Discovery signals
-            </span>
-            <Activity className="h-4 w-4 animate-pulseSoft text-signal-mint" aria-hidden="true" />
-          </div>
-          <div className="space-y-2">
-            <div className="h-2 rounded bg-white/20" />
-            <div className="h-2 w-10/12 rounded bg-white/10" />
-            <div className="h-2 w-8/12 rounded bg-white/10" />
-          </div>
-          <div className="mt-4 flex items-center gap-2 text-xs text-slate-300">
-            <GitBranch className="h-4 w-4 text-signal-cyan" aria-hidden="true" />
-            Content, schema, links, trust
+              <div className="space-y-3">
+                {copy.metrics.map((metric) => (
+                  <MetricBar
+                    key={metric.label}
+                    label={metric.label}
+                    value={metric.value}
+                    width={metric.width}
+                  />
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-md border border-white/10 bg-white/[0.035] p-4">
+                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-slate-100">
+                  <FileText className="h-4 w-4 text-signal-blue" aria-hidden="true" />
+                  {copy.nextActionsTitle}
+                </div>
+                <ul className="space-y-2">
+                  {copy.auditItems.map((item) => (
+                    <li key={item} className="flex gap-2 text-xs leading-5 text-slate-400">
+                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal-blue" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function MetricBar({ label, value, width }: { label: string; value: string; width: string }) {
+  return (
+    <div>
+      <div className="mb-2 flex items-center justify-between gap-3 text-xs">
+        <span className="text-slate-400">{label}</span>
+        <span className="font-medium text-slate-300">{value}</span>
+      </div>
+      <div className="h-2 overflow-hidden rounded bg-white/10">
+        <div className={`h-full rounded bg-signal-blue/75 ${width}`} />
       </div>
     </div>
   );

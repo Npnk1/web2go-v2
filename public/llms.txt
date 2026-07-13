@@ -1,10 +1,15 @@
 # Web2Go
 
-Web2Go is a digital studio focused on AI website optimization, GEO/LLM readiness, technical SEO, structured data, performance, trust, and conversion-focused website design.
+Web2Go is a digital studio focused on AI website optimization, answer-engine readiness, technical SEO, structured data, performance, trust, and conversion-focused website design.
+
+Localized website routes:
+- English: /en
+- Dutch: /nl
+- Spanish: /es
 
 Core services:
 - AI website optimization
-- GEO and LLM optimization
+- Answer engine readiness
 - Technical SEO
 - Structured data and Schema.org JSON-LD
 - Website redesign
@@ -20,5 +25,4 @@ Positioning:
 Web2Go helps make business websites easier for humans, search engines, and AI systems to understand. Web2Go does not guarantee search rankings or AI recommendations.
 
 Contact:
-hello@web2go.example
-
+Use the localized consultation form on /en#contact, /nl#contact, or /es#contact.

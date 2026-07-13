@@ -17,7 +17,7 @@ export function SectionHeading({
         align === "center" ? "text-center" : "text-left"
       }`}
     >
-      <p className="mb-4 text-sm font-semibold uppercase text-signal-cyan">
+      <p className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-signal-blue">
         {eyebrow}
       </p>
       <h2 className="text-balance text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">

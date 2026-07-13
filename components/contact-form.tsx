@@ -2,6 +2,8 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import type { Locale } from "@/i18n/locales";
+import type { Messages } from "@/i18n/types";
 
 type FormState = {
   fullName: string;
@@ -18,6 +20,7 @@ type FormState = {
 };
 
 type Errors = Partial<Record<keyof FormState, string>>;
+type FormStatus = "idle" | "submitting" | "success" | "development" | "error";
 
 const initialState: FormState = {
   fullName: "",
@@ -46,42 +49,49 @@ const requiredFields: Array<keyof FormState> = [
   "message"
 ];
 
-function validate(values: FormState): Errors {
+function validate(values: FormState, copy: Messages["form"]): Errors {
   const errors: Errors = {};
 
   requiredFields.forEach((field) => {
     if (!values[field].trim()) {
-      errors[field] = "This field is required.";
+      errors[field] = copy.validation.required;
     }
   });
 
   if (values.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    errors.email = "Enter a valid email address.";
+    errors.email = copy.validation.email;
   }
 
   if (values.websiteUrl) {
     try {
       const url = new URL(values.websiteUrl);
       if (!["http:", "https:"].includes(url.protocol)) {
-        errors.websiteUrl = "Use a valid website URL.";
+        errors.websiteUrl = copy.validation.urlProtocol;
       }
     } catch {
-      errors.websiteUrl = "Use a full URL, for example https://example.com.";
+      errors.websiteUrl = copy.validation.urlFull;
     }
   }
 
   return errors;
 }
 
-export function ContactForm() {
+export function ContactForm({
+  locale,
+  copy
+}: {
+  locale: Locale;
+  copy: Messages["form"];
+}) {
   const [values, setValues] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const hasErrors = useMemo(() => Object.keys(errors).length > 0, [errors]);
+  const isSubmitting = status === "submitting";
 
   const update = (field: keyof FormState, value: string) => {
-    setSubmitted(false);
+    setStatus("idle");
     setValues((current) => ({ ...current, [field]: value }));
     if (errors[field]) {
       setErrors((current) => {
@@ -92,79 +102,102 @@ export function ContactForm() {
     }
   };
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const nextErrors = validate(values);
+    const nextErrors = validate(values, copy);
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
-      setSubmitted(false);
+      setStatus("idle");
       return;
     }
 
-    // TODO: Connect this form to an email or CRM backend such as Resend, Supabase, Formspree, or a custom API route.
-    setSubmitted(true);
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ...values, locale })
+      });
+      const result = (await response.json().catch(() => ({}))) as { mode?: string };
+
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus(result.mode === "development" ? "development" : "success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
-    <form className="rounded-lg border border-white/10 bg-white/[0.04] p-5 shadow-card sm:p-6" onSubmit={onSubmit} noValidate>
+    <form className="rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-card sm:p-6" onSubmit={onSubmit} noValidate>
       <div className="mb-6 border-b border-white/10 pb-5">
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-signal-cyan">
-          Consultation request
+        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-signal-blue">
+          {copy.title}
         </p>
         <p className="mt-2 text-sm leading-6 text-slate-300">
-          Share the business context, website, and main goal so the first recommendation can be practical.
+          {copy.intro}
         </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Full name" name="fullName" value={values.fullName} error={errors.fullName} onChange={update} autoComplete="name" required />
-        <Field label="Business name" name="businessName" value={values.businessName} error={errors.businessName} onChange={update} autoComplete="organization" required />
-        <Field label="Website URL" name="websiteUrl" type="url" value={values.websiteUrl} error={errors.websiteUrl} onChange={update} placeholder="https://example.com" autoComplete="url" required />
-        <Field label="Email" name="email" type="email" value={values.email} error={errors.email} onChange={update} autoComplete="email" required />
-        <Field label="Phone (optional)" name="phone" type="tel" value={values.phone} error={errors.phone} onChange={update} autoComplete="tel" />
-        <Field label="Country" name="country" value={values.country} error={errors.country} onChange={update} autoComplete="country-name" required />
+        <Field label={copy.fields.fullName.label} name="fullName" value={values.fullName} error={errors.fullName} onChange={update} autoComplete="name" required />
+        <Field label={copy.fields.businessName.label} name="businessName" value={values.businessName} error={errors.businessName} onChange={update} autoComplete="organization" required />
+        <Field label={copy.fields.websiteUrl.label} name="websiteUrl" type="url" value={values.websiteUrl} error={errors.websiteUrl} onChange={update} placeholder={copy.fields.websiteUrl.placeholder} autoComplete="url" required />
+        <Field label={copy.fields.email.label} name="email" type="email" value={values.email} error={errors.email} onChange={update} autoComplete="email" required />
+        <Field label={copy.fields.phone.label} name="phone" type="tel" value={values.phone} error={errors.phone} onChange={update} autoComplete="tel" />
+        <Field label={copy.fields.country.label} name="country" value={values.country} error={errors.country} onChange={update} autoComplete="country-name" required />
         <SelectField
-          label="Business type"
+          label={copy.fields.businessType.label}
           name="businessType"
           value={values.businessType}
           error={errors.businessType}
           onChange={update}
           required
-          options={["Restaurant", "Hotel", "Clinic", "Law firm", "Real estate", "Local service", "Ecommerce", "Other"]}
+          placeholder={copy.selectPlaceholder}
+          options={copy.options.businessType}
         />
         <SelectField
-          label="Main goal"
+          label={copy.fields.mainGoal.label}
           name="mainGoal"
           value={values.mainGoal}
           error={errors.mainGoal}
           onChange={update}
           required
-          options={["AI/search visibility", "New website", "Website redesign", "More leads", "Technical SEO", "Performance", "Booking flow"]}
+          placeholder={copy.selectPlaceholder}
+          options={copy.options.mainGoal}
         />
         <SelectField
-          label="Budget range"
+          label={copy.fields.budgetRange.label}
           name="budgetRange"
           value={values.budgetRange}
           error={errors.budgetRange}
           onChange={update}
           required
-          options={["EUR 490 - 1,000", "EUR 1,900 - 4,000", "EUR 4,000 - 8,000", "EUR 8,000+", "Need guidance"]}
+          placeholder={copy.selectPlaceholder}
+          options={copy.options.budgetRange}
         />
         <SelectField
-          label="Preferred contact"
+          label={copy.fields.preferredContact.label}
           name="preferredContact"
           value={values.preferredContact}
           error={errors.preferredContact}
           onChange={update}
           required
-          options={["Email", "Phone", "Video call", "WhatsApp"]}
+          placeholder={copy.selectPlaceholder}
+          options={copy.options.preferredContact}
         />
       </div>
 
       <div className="mt-4">
         <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
-          Message
+          {copy.fields.message.label}
         </label>
         <textarea
           id="message"
@@ -176,28 +209,32 @@ export function ContactForm() {
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
           className={`field min-h-36 resize-y ${errors.message ? "field-error" : ""}`}
-          placeholder="Tell us what you want the website to improve."
+          placeholder={copy.fields.message.placeholder}
         />
         {errors.message ? <p id="message-error" className="mt-2 text-sm text-rose-300">{errors.message}</p> : null}
       </div>
 
       {hasErrors ? (
         <p role="alert" className="mt-4 rounded-md border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
-          Please fix the highlighted fields before sending.
+          {copy.validation.formError}
         </p>
       ) : null}
 
-      {submitted ? (
-        <div role="status" className="mt-4 flex items-start gap-3 rounded-md border border-signal-mint/30 bg-signal-mint/10 px-4 py-3 text-sm text-slate-100">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-signal-mint" aria-hidden="true" />
-          <p>
-            Thanks. Your request details are valid. Connect the production email or CRM backend before launch to deliver submissions to Web2Go.
-          </p>
+      {status === "error" ? (
+        <p role="alert" className="mt-4 rounded-md border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+          {copy.validation.serverError}
+        </p>
+      ) : null}
+
+      {status === "success" || status === "development" ? (
+        <div role="status" aria-live="polite" className="mt-4 flex items-start gap-3 rounded-md border border-emerald-300/25 bg-emerald-400/10 px-4 py-3 text-sm text-slate-100">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-200" aria-hidden="true" />
+          <p>{status === "development" ? copy.developmentSuccess : copy.success}</p>
         </div>
       ) : null}
 
-      <button type="submit" className="btn-primary mt-6 w-full justify-center sm:w-auto">
-        <span>Request consultation</span>
+      <button type="submit" className="btn-primary mt-6 w-full justify-center sm:w-auto" disabled={isSubmitting}>
+        <span>{isSubmitting ? copy.submitting : copy.submit}</span>
         <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </button>
     </form>
@@ -249,10 +286,11 @@ type SelectFieldProps = {
   error?: string;
   onChange: (name: keyof FormState, value: string) => void;
   options: string[];
+  placeholder: string;
   required?: boolean;
 };
 
-function SelectField({ label, name, value, error, onChange, options, required = false }: SelectFieldProps) {
+function SelectField({ label, name, value, error, onChange, options, placeholder, required = false }: SelectFieldProps) {
   const errorId = `${name}-error`;
 
   return (
@@ -270,7 +308,7 @@ function SelectField({ label, name, value, error, onChange, options, required = 
         onChange={(event) => onChange(name, event.target.value)}
         className={`field ${error ? "field-error" : ""}`}
       >
-        <option value="">Select one</option>
+        <option value="">{placeholder}</option>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}
@@ -281,4 +319,3 @@ function SelectField({ label, name, value, error, onChange, options, required = 
     </div>
   );
 }
-
