@@ -11,6 +11,12 @@ Premium multilingual Next.js website for Web2Go, focused on AI website optimizat
 
 Localized legal pages are available at `/:locale/privacy` and `/:locale/terms`.
 
+Localized service pages are available at:
+
+- `/:locale/services/ai-visibility`
+- `/:locale/services/ai-ready-websites`
+- `/:locale/services/technical-seo`
+
 ## Run locally
 
 ```bash
@@ -24,6 +30,7 @@ Open `http://localhost:3000/en`.
 
 ```bash
 pnpm.cmd run typecheck
+pnpm.cmd run lint
 pnpm.cmd run build
 ```
 
@@ -47,4 +54,6 @@ If the Resend/contact environment variables are missing, the API returns a devel
 - All visible page copy lives in `i18n/*.ts` dictionaries.
 - The language switcher preserves the current page and hash where possible, for example `/en#services` to `/nl#services`.
 - Canonicals, hreflang alternates, sitemap entries, and JSON-LD are localized.
+- The design system is centralized in `app/globals.css` and `tailwind.config.ts`.
+- Technical illustrations are lightweight HTML, CSS, and SVG components with reduced-motion support.
 - If PowerShell blocks `pnpm`, use `pnpm.cmd` as shown above.

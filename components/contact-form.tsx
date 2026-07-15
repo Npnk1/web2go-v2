@@ -136,12 +136,12 @@ export function ContactForm({
   };
 
   return (
-    <form className="rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-card sm:p-6" onSubmit={onSubmit} noValidate>
-      <div className="mb-6 border-b border-white/10 pb-5">
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-signal-blue">
+    <form className="rounded-[14px] border border-ink-950/15 bg-white p-5 shadow-lift sm:p-8" onSubmit={onSubmit} noValidate>
+      <div className="mb-7 border-b border-ink-950/10 pb-6">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-cobalt-500">
           {copy.title}
         </p>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-ink-600">
           {copy.intro}
         </p>
       </div>
@@ -196,7 +196,7 @@ export function ContactForm({
       </div>
 
       <div className="mt-4">
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
+        <label htmlFor="message" className="mb-2 block text-sm font-semibold text-ink-700">
           {copy.fields.message.label}
         </label>
         <textarea
@@ -211,24 +211,24 @@ export function ContactForm({
           className={`field min-h-36 resize-y ${errors.message ? "field-error" : ""}`}
           placeholder={copy.fields.message.placeholder}
         />
-        {errors.message ? <p id="message-error" className="mt-2 text-sm text-rose-300">{errors.message}</p> : null}
+        {errors.message ? <p id="message-error" className="mt-2 text-sm text-rose-700">{errors.message}</p> : null}
       </div>
 
       {hasErrors ? (
-        <p role="alert" className="mt-4 rounded-md border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+        <p role="alert" className="mt-4 rounded-md border border-rose-500/30 bg-rose-50 px-4 py-3 text-sm text-rose-800">
           {copy.validation.formError}
         </p>
       ) : null}
 
       {status === "error" ? (
-        <p role="alert" className="mt-4 rounded-md border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+        <p role="alert" className="mt-4 rounded-md border border-rose-500/30 bg-rose-50 px-4 py-3 text-sm text-rose-800">
           {copy.validation.serverError}
         </p>
       ) : null}
 
       {status === "success" || status === "development" ? (
-        <div role="status" aria-live="polite" className="mt-4 flex items-start gap-3 rounded-md border border-emerald-300/25 bg-emerald-400/10 px-4 py-3 text-sm text-slate-100">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-200" aria-hidden="true" />
+        <div role="status" aria-live="polite" className="mt-4 flex items-start gap-3 rounded-md border border-emerald-600/20 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" aria-hidden="true" />
           <p>{status === "development" ? copy.developmentSuccess : copy.success}</p>
         </div>
       ) : null}
@@ -258,7 +258,7 @@ function Field({ label, name, value, error, onChange, type = "text", placeholder
 
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-200">
+      <label htmlFor={name} className="mb-2 block text-sm font-semibold text-ink-700">
         {label}
       </label>
       <input
@@ -274,7 +274,7 @@ function Field({ label, name, value, error, onChange, type = "text", placeholder
         onChange={(event) => onChange(name, event.target.value)}
         className={`field ${error ? "field-error" : ""}`}
       />
-      {error ? <p id={errorId} className="mt-2 text-sm text-rose-300">{error}</p> : null}
+      {error ? <p id={errorId} className="mt-2 text-sm text-rose-700">{error}</p> : null}
     </div>
   );
 }
@@ -295,7 +295,7 @@ function SelectField({ label, name, value, error, onChange, options, placeholder
 
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-medium text-slate-200">
+      <label htmlFor={name} className="mb-2 block text-sm font-semibold text-ink-700">
         {label}
       </label>
       <select
@@ -315,7 +315,7 @@ function SelectField({ label, name, value, error, onChange, options, placeholder
           </option>
         ))}
       </select>
-      {error ? <p id={errorId} className="mt-2 text-sm text-rose-300">{error}</p> : null}
+      {error ? <p id={errorId} className="mt-2 text-sm text-rose-700">{error}</p> : null}
     </div>
   );
 }

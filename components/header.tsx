@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Languages, Menu, X } from "lucide-react";
+import { ArrowUpRight, Languages, Menu, X } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
 import {
   localeLabels,
   localePath,
@@ -12,20 +13,13 @@ import {
 } from "@/i18n/locales";
 import type { Messages } from "@/i18n/types";
 
-export function Header({
-  locale,
-  copy
-}: {
-  locale: Locale;
-  copy: Messages["navigation"];
-}) {
+export function Header({ locale, copy }: { locale: Locale; copy: Messages["navigation"] }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const localizedHash = (hash: string) => `${localePath(locale)}${hash}`;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,35 +33,15 @@ export function Header({
   }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition ${
-        scrolled
-          ? "border-white/10 bg-ink-950/90 shadow-2xl shadow-black/30 backdrop-blur-xl"
-          : "border-transparent bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-        <a
-          href={localizedHash("#top")}
-          className="group flex items-center gap-3"
-          aria-label={copy.homeAria}
-          onClick={() => setOpen(false)}
-        >
-          <span className="grid h-10 w-10 place-items-center rounded-md border border-white/15 bg-white/[0.06] text-sm font-bold text-white shadow-panel">
-            W
-          </span>
-          <span className="text-lg font-semibold text-white">
-            Web<span className="text-signal-blue">2</span>Go
-          </span>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition duration-300 ${scrolled || open ? "border-ink-950/10 bg-paper/95 shadow-crisp backdrop-blur-xl" : "border-transparent bg-paper/80"}`}>
+      <div className="mx-auto flex h-[76px] max-w-[var(--container)] items-center justify-between px-5 sm:px-6 lg:px-8">
+        <a href={localizedHash("#top")} aria-label={copy.homeAria} onClick={() => setOpen(false)} className="rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500 focus-visible:ring-offset-4 focus-visible:ring-offset-paper">
+          <BrandMark />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label={copy.mainAria}>
-          {copy.items.map((item) => (
-            <a
-              key={item.href}
-              href={localizedHash(item.href)}
-              className="rounded-md px-1 py-2 text-sm font-medium text-slate-300 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-blue/45 focus-visible:ring-offset-4 focus-visible:ring-offset-ink-950"
-            >
+        <nav className="hidden items-center gap-6 xl:flex" aria-label={copy.mainAria}>
+          {copy.items.slice(0, 6).map((item) => (
+            <a key={item.href} href={localizedHash(item.href)} className="rounded-sm py-2 text-sm font-medium text-ink-700 transition hover:text-cobalt-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500">
               {item.label}
             </a>
           ))}
@@ -77,52 +51,28 @@ export function Header({
           <LanguageSwitcher locale={locale} label={copy.languageLabel} />
           <a href={localizedHash("#contact")} className="btn-primary">
             <span>{copy.cta}</span>
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
 
-        <button
-          type="button"
-          className="grid h-10 w-10 place-items-center rounded-md border border-white/10 bg-white/[0.04] text-white transition hover:border-signal-blue/35 hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-blue/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 lg:hidden"
-          aria-label={open ? copy.closeMenu : copy.openMenu}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((value) => !value)}
-        >
+        <button type="button" className="grid h-11 w-11 place-items-center rounded-md border border-ink-950/15 bg-white text-ink-950 transition hover:border-cobalt-500 hover:text-cobalt-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500 lg:hidden" aria-label={open ? copy.closeMenu : copy.openMenu} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((value) => !value)}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      <div
-        id="mobile-menu"
-        aria-hidden={!open}
-        className={`lg:hidden ${
-          open ? "block opacity-100" : "hidden opacity-0"
-        } absolute inset-x-0 top-20 border-b border-white/10 bg-ink-950/95 px-5 pb-6 shadow-2xl shadow-black/40 backdrop-blur-xl transition`}
-      >
-        <nav className="grid gap-1 py-3" aria-label={copy.mobileAria}>
+      <div id="mobile-menu" aria-hidden={!open} className={`absolute inset-x-0 top-[76px] min-h-[calc(100svh-76px)] max-h-[calc(100svh-76px)] overflow-y-auto border-b border-ink-950/10 bg-paper px-5 pb-7 shadow-lift transition lg:hidden ${open ? "block" : "hidden"}`}>
+        <nav className="grid py-4" aria-label={copy.mobileAria}>
           {copy.items.map((item) => (
-            <a
-              key={item.href}
-              href={localizedHash(item.href)}
-              className="rounded-md px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.06] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-blue/45"
-              onClick={() => setOpen(false)}
-            >
+            <a key={item.href} href={localizedHash(item.href)} className="border-b border-ink-950/10 px-1 py-3.5 text-lg font-medium text-ink-950 transition hover:text-cobalt-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500" onClick={() => setOpen(false)}>
               {item.label}
             </a>
           ))}
         </nav>
-        <div className="mt-2 grid gap-3">
-          <div className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-3 text-sm text-slate-300">
-            <div className="mb-3 flex items-center gap-2">
-              <Languages className="h-4 w-4 text-signal-blue" aria-hidden="true" />
-              <span>{copy.languageLabel}</span>
-            </div>
-            <LanguageSwitcher locale={locale} label={copy.languageLabel} compact onNavigate={() => setOpen(false)} />
-          </div>
-          <a href={localizedHash("#contact")} className="btn-primary justify-center" onClick={() => setOpen(false)}>
+        <div className="grid gap-4 pt-2">
+          <LanguageSwitcher locale={locale} label={copy.languageLabel} compact onNavigate={() => setOpen(false)} />
+          <a href={localizedHash("#contact")} className="btn-primary" onClick={() => setOpen(false)}>
             <span>{copy.cta}</span>
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -130,17 +80,7 @@ export function Header({
   );
 }
 
-function LanguageSwitcher({
-  locale,
-  label,
-  compact = false,
-  onNavigate
-}: {
-  locale: Locale;
-  label: string;
-  compact?: boolean;
-  onNavigate?: () => void;
-}) {
+function LanguageSwitcher({ locale, label, compact = false, onNavigate }: { locale: Locale; label: string; compact?: boolean; onNavigate?: () => void }) {
   const pathname = usePathname() || localePath(locale);
   const [hash, setHash] = useState("");
 
@@ -152,31 +92,18 @@ function LanguageSwitcher({
   }, []);
 
   return (
-    <div
-      aria-label={label}
-      className={`flex items-center ${compact ? "gap-2" : "gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-300"}`}
-    >
-      {!compact ? <Languages className="h-4 w-4 text-signal-blue" aria-hidden="true" /> : null}
-      {locales.map((targetLocale, index) => {
-        const isActive = targetLocale === locale;
-        return (
-          <span key={targetLocale} className="flex items-center gap-2">
-            {index > 0 ? <span className="text-slate-600">/</span> : null}
-            <a
-              href={`${switchLocalePath(pathname, targetLocale)}${hash}`}
-              aria-current={isActive ? "page" : undefined}
-              onClick={onNavigate}
-              className={`rounded px-1.5 py-1 text-xs font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-blue/45 ${
-                isActive
-                  ? "bg-white/[0.08] text-white"
-                  : "text-slate-500 hover:text-slate-200"
-              }`}
-            >
+    <div aria-label={label} className={`flex items-center ${compact ? "justify-between border-y border-ink-950/10 py-3" : "rounded-md border border-ink-950/10 bg-white p-1"}`}>
+      {compact ? <span className="flex items-center gap-2 text-sm font-medium text-ink-700"><Languages className="h-4 w-4 text-cobalt-500" aria-hidden="true" />{label}</span> : null}
+      <div className="flex items-center gap-1">
+        {locales.map((targetLocale) => {
+          const isActive = targetLocale === locale;
+          return (
+            <a key={targetLocale} href={`${switchLocalePath(pathname, targetLocale)}${hash}`} aria-current={isActive ? "page" : undefined} onClick={onNavigate} className={`rounded px-2.5 py-2 text-xs font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500 ${isActive ? "bg-ink-950 text-white" : "text-ink-600 hover:bg-cobalt-50 hover:text-cobalt-600"}`}>
               {localeLabels[targetLocale]}
             </a>
-          </span>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

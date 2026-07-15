@@ -10,8 +10,8 @@ export function generateStaticParams() {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#050713",
-  colorScheme: "dark"
+  themeColor: "#f5f3ec",
+  colorScheme: "light"
 };
 
 export default async function LocaleLayout({

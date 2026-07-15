@@ -10,24 +10,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        paper: "#f5f3ec",
+        canvas: "#fbfaf7",
         ink: {
-          950: "#050712",
-          900: "#090c16",
-          850: "#0d1220",
-          800: "#121827",
-          700: "#1a2233"
+          950: "#091126",
+          900: "#0b1736",
+          800: "#162342",
+          700: "#273755",
+          600: "#516078"
         },
-        signal: {
-          blue: "#7fa7e6",
-          cyan: "#86b7c9",
-          violet: "#9f9ac7",
-          mint: "#9fc8b4"
-        }
+        cobalt: {
+          50: "#eef3ff",
+          100: "#dfe8ff",
+          200: "#bfd0ff",
+          500: "#2457f5",
+          600: "#1948dc",
+          700: "#1439b7"
+        },
+        acid: "#b8e64a"
       },
       boxShadow: {
-        glow: "0 18px 42px rgba(0, 0, 0, 0.26)",
-        card: "0 24px 64px rgba(0, 0, 0, 0.30)",
-        panel: "0 16px 42px rgba(0, 0, 0, 0.22)"
+        lift: "0 24px 70px rgba(9, 17, 38, 0.12)",
+        card: "0 12px 34px rgba(9, 17, 38, 0.08)",
+        crisp: "0 1px 0 rgba(9, 17, 38, 0.08)"
+      },
+      transitionTimingFunction: {
+        premium: "cubic-bezier(0.22, 1, 0.36, 1)"
       }
     }
   },

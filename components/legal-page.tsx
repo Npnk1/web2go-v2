@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
 import { localePath, type Locale } from "@/i18n/locales";
 import type { Messages } from "@/i18n/types";
 
@@ -14,23 +16,24 @@ export function LegalPage({
   content: LegalContent;
 }) {
   return (
-    <main className="min-h-screen bg-ink-950 px-5 py-20 text-slate-200 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-card sm:p-8">
-        <Link href={localePath(locale)} className="text-sm font-medium text-signal-blue transition hover:text-white">
-          {backLabel}
+    <main className="min-h-screen bg-paper px-5 py-10 text-ink-950 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl">
+        <Link href={localePath(locale)} aria-label={backLabel}><BrandMark /></Link>
+        <Link href={localePath(locale)} className="mt-16 inline-flex items-center gap-2 text-sm font-bold text-cobalt-600 transition hover:gap-3 hover:text-cobalt-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500">
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />{backLabel}
         </Link>
-        <h1 className="mt-8 text-4xl font-semibold tracking-tight text-white">
+        <h1 className="mt-8 max-w-3xl text-5xl font-semibold leading-tight tracking-tight text-ink-950 sm:text-6xl">
           {content.title}
         </h1>
-        <p className="mt-5 text-sm leading-7 text-slate-300">
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-ink-600">
           {content.intro}
         </p>
 
-        <div className="mt-8 space-y-7 text-sm leading-7 text-slate-300">
+        <div className="mt-12 border-t border-ink-950/15 text-sm leading-7 text-ink-600">
           {content.sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="text-lg font-semibold text-white">{section.title}</h2>
-              <p className="mt-2">{section.body}</p>
+            <section key={section.title} className="grid gap-4 border-b border-ink-950/15 py-8 sm:grid-cols-[0.7fr_1.3fr] sm:gap-10">
+              <h2 className="text-xl font-semibold text-ink-950">{section.title}</h2>
+              <p>{section.body}</p>
             </section>
           ))}
         </div>

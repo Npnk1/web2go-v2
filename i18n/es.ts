@@ -45,10 +45,10 @@ export const es = {
     ]
   },
   hero: {
-    eyebrow: "Visibilidad estructurada para sitios web empresariales serios",
-    title: "Haz tu sitio más claro para IA, búsqueda y clientes",
+    eyebrow: "Visibilidad con IA sobre una base sólida",
+    title: "Haz que tu sitio sea más fácil de encontrar, confiar y entender.",
     description:
-      "Web2Go convierte sitios web empresariales confusos en activos digitales estructurados, rápidos y fiables que las personas, los buscadores y los sistemas de IA pueden entender mejor.",
+      "Estructuramos tu sitio para personas, buscadores y asistentes de IA, sin promesas exageradas.",
     primaryCta: "Reservar consulta gratis",
     secondaryCta: "Explorar servicios",
     trustPoints: [
@@ -59,8 +59,8 @@ export const es = {
     ]
   },
   heroVisual: {
-    eyebrow: "Sistema de visibilidad",
-    title: "Mapa de preparación del sitio",
+    eyebrow: "Sistema de visibilidad estructurada",
+    title: "Tu sitio web empresarial",
     scoreLabel: "Puntuación",
     readabilityTitle: "Señales de legibilidad",
     discoveryTitle: "Estructura de descubrimiento",
@@ -82,7 +82,8 @@ export const es = {
       "Los datos estructurados apoyan el contexto de organización y servicios",
       "Los enlaces internos guían a crawlers y visitantes cualificados",
       "Pruebas, políticas y vías de contacto son fáciles de verificar"
-    ]
+    ],
+    channels: ["Búsqueda de Google", "ChatGPT", "Búsqueda con IA", "Clientes"]
   },
   problem: {
     eyebrow: "El problema",
@@ -138,9 +139,9 @@ export const es = {
   },
   services: {
     eyebrow: "Servicios",
-    title: "Todo lo que tu sitio necesita para ser más claro y útil",
+    title: "Tres formas de fortalecer tu sitio web",
     description:
-      "Servicios enfocados de web, búsqueda, legibilidad por IA, rendimiento y conversión para empresas que necesitan resultados prácticos.",
+      "Trabajo enfocado en visibilidad, sitios web y base técnica, con resultados prácticos como prioridad.",
     includesLabel: "Incluye",
     cards: [
       {
@@ -168,9 +169,9 @@ export const es = {
         bullets: ["Configuración JSON-LD", "Schema de servicio", "Marcado FAQPage"]
       },
       {
-        title: "Rediseño web",
+        title: "Sitios web preparados para IA",
         description:
-          "Reconstruye páginas obsoletas en un sitio premium, rápido y fiable sin perder valor SEO esencial.",
+          "Planifica y crea un sitio premium, rápido y fiable con bases sólidas de búsqueda, legibilidad IA y conversión.",
         bullets: ["Mejora UX", "Migración de contenido", "Continuidad SEO"]
       },
       {
@@ -284,9 +285,9 @@ export const es = {
   },
   work: {
     eyebrow: "Conceptos de ejemplo",
-    title: "Casos demo sin falsas afirmaciones de clientes",
+    title: "Una transformación estructurada, mostrada con honestidad",
     description:
-      "Estos son conceptos de proyecto que muestran cómo Web2Go pensaría distintos sectores. No se presentan como resultados reales de clientes.",
+      "Este concepto demo muestra cómo Web2Go aborda un reto sectorial. No se presenta como un resultado real de cliente.",
     problemLabel: "Problema:",
     solutionLabel: "Solución:",
     outcomeLabel: "Resultado de ejemplo:",
@@ -351,7 +352,7 @@ export const es = {
   },
   pricing: {
     eyebrow: "Precios",
-    title: "Puntos de partida prácticos, definidos antes de empezar",
+    title: "Alcance claro. Puntos de partida prácticos.",
     description:
       "El precio final depende de número de páginas, integraciones, profundidad de contenido, complejidad técnica y soporte continuo.",
     recommendedLabel: "Recomendado",
@@ -564,7 +565,7 @@ export const es = {
           { label: "Optimización IA", href: "#ai-optimization" },
           { label: "SEO técnico", href: "#services" },
           { label: "Datos estructurados", href: "#services" },
-          { label: "Rediseño web", href: "#services" }
+          { label: "Sitios preparados para IA", href: "#services" }
         ]
       },
       {

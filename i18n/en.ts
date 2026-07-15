@@ -43,10 +43,10 @@ export const en = {
     ]
   },
   hero: {
-    eyebrow: "Structured visibility for serious business websites",
-    title: "Make your website clearer for AI, search, and customers",
+    eyebrow: "AI visibility, built on solid foundations",
+    title: "Make your website easier to find, trust, and understand.",
     description:
-      "Web2Go turns unclear business websites into structured, fast, trustworthy digital assets that are easier for people, search engines, and AI systems to understand.",
+      "We structure your website for people, search engines, and AI assistants - without inflated promises.",
     primaryCta: "Book Free Consultation",
     secondaryCta: "Explore Services",
     trustPoints: [
@@ -57,8 +57,8 @@ export const en = {
     ]
   },
   heroVisual: {
-    eyebrow: "Visibility system",
-    title: "Website readiness map",
+    eyebrow: "Structured visibility system",
+    title: "Your business website",
     scoreLabel: "Score",
     readabilityTitle: "Readability signals",
     discoveryTitle: "Discovery structure",
@@ -80,7 +80,8 @@ export const en = {
       "Structured data supports organization and service context",
       "Internal links guide crawlers and qualified visitors",
       "Proof, policies, and contact paths are easy to verify"
-    ]
+    ],
+    channels: ["Google Search", "ChatGPT", "AI search", "Customers"]
   },
   problem: {
     eyebrow: "The problem",
@@ -136,9 +137,9 @@ export const en = {
   },
   services: {
     eyebrow: "Services",
-    title: "Everything your website needs to become clearer and more useful",
+    title: "Three ways to strengthen your website",
     description:
-      "Focused website, search, AI readability, performance, and conversion services for businesses that need practical outcomes.",
+      "Focused work across visibility, websites, and technical foundations - scoped around practical outcomes.",
     includesLabel: "Includes",
     cards: [
       {
@@ -166,9 +167,9 @@ export const en = {
         bullets: ["JSON-LD setup", "Service schema", "FAQPage markup"]
       },
       {
-        title: "Website Redesign",
+        title: "AI-Ready Websites",
         description:
-          "Rebuild outdated pages into a premium, fast, trustworthy site without losing core SEO value.",
+          "Plan and build a premium, fast, trustworthy website with strong search, AI-readability, and conversion foundations.",
         bullets: ["UX overhaul", "Content migration", "SEO continuity"]
       },
       {
@@ -282,9 +283,9 @@ export const en = {
   },
   work: {
     eyebrow: "Example concepts",
-    title: "Demo case studies without fake client claims",
+    title: "A structured transformation, shown honestly",
     description:
-      "These are example project concepts showing how Web2Go would think through different industries. They are not presented as real client results.",
+      "This demo concept shows how Web2Go approaches an industry challenge. It is not presented as a real client result.",
     problemLabel: "Problem:",
     solutionLabel: "Solution:",
     outcomeLabel: "Example outcome:",
@@ -349,7 +350,7 @@ export const en = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "Practical starting points, scoped before work begins",
+    title: "Clear scopes. Practical starting points.",
     description:
       "Final pricing depends on page count, integrations, content depth, technical complexity, and ongoing support needs.",
     recommendedLabel: "Recommended",
@@ -562,7 +563,7 @@ export const en = {
           { label: "AI Optimization", href: "#ai-optimization" },
           { label: "Technical SEO", href: "#services" },
           { label: "Structured Data", href: "#services" },
-          { label: "Website Redesign", href: "#services" }
+          { label: "AI-Ready Websites", href: "#services" }
         ]
       },
       {

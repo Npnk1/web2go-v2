@@ -3,13 +3,17 @@ type SectionHeadingProps = {
   title: string;
   description: string;
   align?: "left" | "center";
+  tone?: "light" | "dark";
+  number?: string;
 };
 
 export function SectionHeading({
   eyebrow,
   title,
   description,
-  align = "center"
+  align = "center",
+  tone = "light",
+  number
 }: SectionHeadingProps) {
   return (
     <div
@@ -17,13 +21,20 @@ export function SectionHeading({
         align === "center" ? "text-center" : "text-left"
       }`}
     >
-      <p className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-signal-blue">
-        {eyebrow}
-      </p>
-      <h2 className="text-balance text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
+      <div className={`mb-5 flex items-center gap-3 ${align === "center" ? "justify-center" : "justify-start"}`}>
+        {number ? (
+          <span className={`rounded-full px-2.5 py-1 text-[11px] font-bold ${tone === "dark" ? "bg-acid text-ink-950" : "bg-cobalt-500 text-white"}`}>
+            {number}
+          </span>
+        ) : null}
+        <p className={`text-xs font-bold uppercase tracking-[0.18em] ${tone === "dark" ? "text-cobalt-200" : "text-cobalt-500"}`}>
+          {eyebrow}
+        </p>
+      </div>
+      <h2 className={`text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl ${tone === "dark" ? "text-white" : "text-ink-950"}`}>
         {title}
       </h2>
-      <p className="mt-5 text-pretty text-base leading-8 text-slate-300 sm:text-lg">
+      <p className={`mt-5 text-pretty text-base leading-7 sm:text-lg sm:leading-8 ${tone === "dark" ? "text-slate-300" : "text-ink-600"}`}>
         {description}
       </p>
     </div>

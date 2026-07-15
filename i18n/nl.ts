@@ -45,10 +45,10 @@ export const nl = {
     ]
   },
   hero: {
-    eyebrow: "Gestructureerde zichtbaarheid voor serieuze bedrijfswebsites",
-    title: "Maak je website duidelijker voor AI, zoekmachines en klanten",
+    eyebrow: "AI-zichtbaarheid op een sterke basis",
+    title: "Maak je website makkelijker te vinden, vertrouwen en begrijpen.",
     description:
-      "Web2Go maakt onduidelijke bedrijfswebsites gestructureerde, snelle en betrouwbare digitale assets die makkelijker te begrijpen zijn voor mensen, zoekmachines en AI-systemen.",
+      "We structureren je website voor mensen, zoekmachines en AI-assistenten - zonder opgeblazen beloftes.",
     primaryCta: "Boek gratis consult",
     secondaryCta: "Bekijk diensten",
     trustPoints: [
@@ -59,8 +59,8 @@ export const nl = {
     ]
   },
   heroVisual: {
-    eyebrow: "Zichtbaarheidssysteem",
-    title: "Website-gereedheidskaart",
+    eyebrow: "Systeem voor gestructureerde zichtbaarheid",
+    title: "Jouw bedrijfswebsite",
     scoreLabel: "Score",
     readabilityTitle: "Leesbaarheidssignalen",
     discoveryTitle: "Discovery-structuur",
@@ -82,7 +82,8 @@ export const nl = {
       "Structured data ondersteunt organisatie- en servicecontext",
       "Interne links sturen crawlers en gekwalificeerde bezoekers",
       "Bewijs, beleid en contactpaden zijn makkelijk te verifieren"
-    ]
+    ],
+    channels: ["Google Zoeken", "ChatGPT", "AI-zoeken", "Klanten"]
   },
   problem: {
     eyebrow: "Het probleem",
@@ -138,9 +139,9 @@ export const nl = {
   },
   services: {
     eyebrow: "Diensten",
-    title: "Alles wat je website nodig heeft om duidelijker en nuttiger te worden",
+    title: "Drie manieren om je website te versterken",
     description:
-      "Gerichte website-, zoek-, AI-leesbaarheid-, performance- en conversiediensten voor bedrijven die praktische resultaten nodig hebben.",
+      "Gericht werk aan zichtbaarheid, websites en techniek - afgestemd op praktische resultaten.",
     includesLabel: "Inbegrepen",
     cards: [
       {
@@ -168,9 +169,9 @@ export const nl = {
         bullets: ["JSON-LD-inrichting", "Serviceschema", "FAQPage-markup"]
       },
       {
-        title: "Website redesign",
+        title: "AI-ready websites",
         description:
-          "Bouw verouderde pagina's om naar een premium, snelle en betrouwbare site zonder kernwaarde voor SEO te verliezen.",
+          "Plan en bouw een premium, snelle en betrouwbare website met sterke zoek-, AI-leesbaarheids- en conversiebasis.",
         bullets: ["UX-verbetering", "Contentmigratie", "SEO-continuiteit"]
       },
       {
@@ -284,9 +285,9 @@ export const nl = {
   },
   work: {
     eyebrow: "Voorbeeldconcepten",
-    title: "Demo-cases zonder neppe klantclaims",
+    title: "Een gestructureerde transformatie, eerlijk getoond",
     description:
-      "Dit zijn voorbeeldconcepten die laten zien hoe Web2Go per sector denkt. Ze worden niet gepresenteerd als echte klantresultaten.",
+      "Dit democoncept laat zien hoe Web2Go een branche-uitdaging benadert. Het wordt niet als echt klantresultaat gepresenteerd.",
     problemLabel: "Probleem:",
     solutionLabel: "Oplossing:",
     outcomeLabel: "Voorbeelduitkomst:",
@@ -351,7 +352,7 @@ export const nl = {
   },
   pricing: {
     eyebrow: "Prijzen",
-    title: "Praktische startpunten, gescoord voordat werk begint",
+    title: "Duidelijke scope. Praktische startpunten.",
     description:
       "Definitieve prijzen hangen af van aantal pagina's, integraties, contentdiepte, technische complexiteit en supportbehoefte.",
     recommendedLabel: "Aanbevolen",
@@ -564,7 +565,7 @@ export const nl = {
           { label: "AI-optimalisatie", href: "#ai-optimization" },
           { label: "Technische SEO", href: "#services" },
           { label: "Structured Data", href: "#services" },
-          { label: "Website redesign", href: "#services" }
+          { label: "AI-ready websites", href: "#services" }
         ]
       },
       {

@@ -54,10 +54,10 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: "/images/ai-visibility-dashboard.png",
+          url: `/${locale}/og`,
           width: 1200,
           height: 630,
-          alt: "Web2Go website readiness interface"
+          alt: messages.hero.title
         }
       ]
     },
@@ -65,7 +65,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: title || messages.metadata.twitterTitle,
       description: description || messages.metadata.twitterDescription,
-      images: ["/images/ai-visibility-dashboard.png"]
+      images: [`/${locale}/og`]
     },
     robots: {
       index: true,
