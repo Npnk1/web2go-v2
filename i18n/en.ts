@@ -42,6 +42,17 @@ export const en = {
       { label: "Contact", href: "#contact" }
     ]
   },
+  emphasis: {
+    hero: "find, trust, and understand",
+    services: "strengthen your website",
+    solution: "Clear structure",
+    aiOptimization: "easier to understand",
+    work: "shown honestly",
+    process: "audit to launch",
+    pricing: "Practical starting points",
+    faq: "straight answers",
+    contact: "improve your website"
+  },
   hero: {
     eyebrow: "AI visibility, built on solid foundations",
     title: "Make your website easier to find, trust, and understand.",
@@ -81,7 +92,16 @@ export const en = {
       "Internal links guide crawlers and qualified visitors",
       "Proof, policies, and contact paths are easy to verify"
     ],
-    channels: ["Google Search", "ChatGPT", "AI search", "Customers"]
+    channels: ["Google Search", "ChatGPT", "AI search", "Customers"],
+    preview: {
+      business: "Northline Advisory",
+      category: "European growth advisory",
+      headline: "Clear guidance for European growth",
+      description: "Market entry, compliance, and operations support for scaling teams.",
+      services: ["Market entry", "Compliance", "Operations"],
+      cta: "Book a consultation",
+      outcome: "Clear business facts · direct contact path"
+    }
   },
   problem: {
     eyebrow: "The problem",
@@ -119,19 +139,24 @@ export const en = {
     cta: "Plan my optimization",
     items: [
       {
-        title: "Structure the business",
+        title: "Define the business and services",
         description:
-          "Clarify services, audiences, locations, entities, proof points, and page hierarchy so the website has a clean information model."
+          "Clarify services, audiences, locations, and page hierarchy so every visitor understands what the business offers."
       },
       {
-        title: "Expose machine-readable signals",
+        title: "Add machine-readable information",
         description:
-          "Add Schema.org JSON-LD, metadata, FAQ blocks, answer-style content, internal links, sitemaps, and clean crawl paths."
+          "Add structured data, metadata, useful answers, internal links, and clean crawl paths that support modern discovery."
       },
       {
-        title: "Turn clarity into leads",
+        title: "Consolidate trust and proof",
         description:
-          "Improve page flow, calls to action, trust sections, booking paths, forms, analytics, and conversion tracking."
+          "Bring reviews, expertise, policies, company details, and examples together so the business is easier to verify."
+      },
+      {
+        title: "Create clear paths to contact or booking",
+        description:
+          "Improve calls to action, booking paths, forms, navigation, and measurement so qualified visitors can take the next step."
       }
     ]
   },
@@ -218,7 +243,7 @@ export const en = {
   },
   aiOptimization: {
     eyebrow: "AI Optimization",
-    title: "What AI website optimization includes",
+    title: "Make your business easier to understand",
     description:
       "The goal is not to manipulate AI tools. The goal is to make the business easier to understand by improving structure, facts, content, speed, and trust.",
     note:
@@ -234,6 +259,126 @@ export const en = {
       "Core Web Vitals",
       "Trust signals",
       "Clear company information"
+    ]
+  },
+  visuals: {
+    audit: {
+      title: "AI visibility audit",
+      exampleLabel: "Illustrative example — results vary by website",
+      scoreLabel: "AI visibility score",
+      issuesLabel: "issues found",
+      opportunitiesLabel: "opportunities",
+      findingsTitle: "Priority findings",
+      findings: [
+        "Missing service schema",
+        "Unclear location signals",
+        "Weak internal linking",
+        "Inconsistent business descriptions"
+      ],
+      recommendationTitle: "Priority recommendation",
+      recommendation: "Start with service schema, location clarity, and consistent company facts.",
+      beforeLabel: "Before",
+      afterLabel: "After improvements",
+      summary: "We inspect the website, identify specific issues, implement improvements, and compare readiness before and after."
+    },
+    website: {
+      label: "Example AI-ready website",
+      business: "Northline Advisory",
+      headline: "Clear guidance for European growth",
+      description: "Market entry, compliance, and operations support for scaling teams.",
+      servicesTitle: "Services",
+      services: ["Market entry", "Compliance", "Operations"],
+      proof: "Consistent company information across six European markets",
+      outcome: "Clear service pages create more relevant discovery paths",
+      cta: "Book a consultation"
+    },
+    profile: {
+      inputTitle: "Website content",
+      inputItems: ["Service pages", "Company facts", "Reviews and contact details"],
+      profileTitle: "Structured business profile",
+      fields: [
+        { label: "Business", value: "Northline Advisory" },
+        { label: "Services", value: "Growth advisory" },
+        { label: "Location", value: "Europe" },
+        { label: "Reviews", value: "Verified sources" },
+        { label: "Contact", value: "Clear and consistent" }
+      ],
+      outputTitle: "Search and AI understanding",
+      outcomes: ["Business identified", "Services understood", "Location verified", "Ready to reference"],
+      codeLabel: "Technical detail: JSON-LD",
+      code: "{ @type: Organization, areaServed: Europe }",
+      summary: "Clear business facts support relevant discovery and make the organization easier for search and AI systems to interpret."
+    },
+    restaurant: {
+      label: "Example restaurant transformation",
+      exampleBadge: "Fictional example",
+      imageAlt: "Warm, plant-filled restaurant interior used for a fictional restaurant example.",
+      business: "Casa Oliva",
+      cuisine: "Mediterranean kitchen",
+      location: "Jordaan, Amsterdam",
+      rating: "4.8 · 286 reviews",
+      hours: "Open today · 17:00–23:00",
+      menuTitle: "Popular tonight",
+      menu: [
+        { name: "Sea bass crudo", price: "EUR 16" },
+        { name: "Charred aubergine", price: "EUR 14" },
+        { name: "Olive oil cake", price: "EUR 9" }
+      ],
+      reserve: "Reserve a table",
+      discoveryTitle: "AI dining recommendation",
+      query: "Where can I book Mediterranean dinner near Jordaan?",
+      result: "Casa Oliva is an open Mediterranean restaurant in Jordaan with table reservations available tonight.",
+      understood: ["Cuisine understood", "Location verified", "Hours and rating visible"],
+      outcome: "Clear information · direct path to reservation",
+      photoCredit: "Photo by vnwayne on Unsplash"
+    }
+  },
+  discoveryStats: {
+    eyebrow: "Discovery data",
+    title: "Discovery is changing.\nMake sure your business changes with it.",
+    description: "Search, AI answers, and structured results are reshaping how customers discover and evaluate businesses.",
+    sourceLabel: "Source",
+    items: [
+      {
+        metric: "5T+",
+        label: "Google searches every year",
+        statement: "Be among the businesses customers actually discover.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "2.5B+",
+        label: "ChatGPT messages every day",
+        statement: "Don't let AI answers leave your expertise out.",
+        sourceName: "OpenAI",
+        sourceUrl: "https://openai.com/global-affairs/new-economic-analysis/",
+        disclaimer: ""
+      },
+      {
+        metric: "10%+",
+        label: "More Search usage for queries with AI Overviews",
+        statement: "Search behavior is changing. Your website should change with it.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "200+ / 40+",
+        label: "Countries and languages with AI Overviews",
+        statement: "Build a discovery foundation that can scale across markets.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products-and-platforms/products/search/ai-overview-expansion-may-2025-update/",
+        disclaimer: ""
+      },
+      {
+        metric: "+25% CTR",
+        label: "On pages enhanced with structured data",
+        statement: "Make your result easier to notice—and easier to choose.",
+        sourceName: "Google Search Central",
+        sourceUrl: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+        disclaimer: "Rotten Tomatoes case study reported by Google. Not a Web2Go result. Results are not guaranteed."
+      }
     ]
   },
   process: {

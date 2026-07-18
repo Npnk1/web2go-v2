@@ -1,7 +1,10 @@
+import { EmphasisText } from "@/components/emphasis-text";
+
 type SectionHeadingProps = {
   eyebrow: string;
   title: string;
   description: string;
+  emphasis?: string;
   align?: "left" | "center";
   tone?: "light" | "dark";
   number?: string;
@@ -11,6 +14,7 @@ export function SectionHeading({
   eyebrow,
   title,
   description,
+  emphasis,
   align = "center",
   tone = "light",
   number
@@ -32,7 +36,7 @@ export function SectionHeading({
         </p>
       </div>
       <h2 className={`text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl ${tone === "dark" ? "text-white" : "text-ink-950"}`}>
-        {title}
+        <EmphasisText text={title} emphasis={emphasis} className={tone === "dark" ? "text-acid" : "text-cobalt-600"} />
       </h2>
       <p className={`mt-5 text-pretty text-base leading-7 sm:text-lg sm:leading-8 ${tone === "dark" ? "text-slate-300" : "text-ink-600"}`}>
         {description}

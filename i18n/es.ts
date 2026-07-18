@@ -44,6 +44,17 @@ export const es = {
       { label: "Contacto", href: "#contact" }
     ]
   },
+  emphasis: {
+    hero: "encontrar, confiar y entender",
+    services: "fortalecer tu sitio web",
+    solution: "Estructura clara",
+    aiOptimization: "más fácil de entender",
+    work: "mostrada con honestidad",
+    process: "auditoría hasta lanzamiento",
+    pricing: "Puntos de partida prácticos",
+    faq: "respuestas claras",
+    contact: "mejorar tu sitio web"
+  },
   hero: {
     eyebrow: "Visibilidad con IA sobre una base sólida",
     title: "Haz que tu sitio sea más fácil de encontrar, confiar y entender.",
@@ -83,7 +94,16 @@ export const es = {
       "Los enlaces internos guían a crawlers y visitantes cualificados",
       "Pruebas, políticas y vías de contacto son fáciles de verificar"
     ],
-    channels: ["Búsqueda de Google", "ChatGPT", "Búsqueda con IA", "Clientes"]
+    channels: ["Búsqueda de Google", "ChatGPT", "Búsqueda con IA", "Clientes"],
+    preview: {
+      business: "Northline Advisory",
+      category: "Consultoría de crecimiento europeo",
+      headline: "Orientación clara para crecer en Europa",
+      description: "Apoyo en entrada a mercados, cumplimiento y operaciones para equipos en expansión.",
+      services: ["Entrada a mercados", "Cumplimiento", "Operaciones"],
+      cta: "Reservar una consulta",
+      outcome: "Datos claros · ruta directa de contacto"
+    }
   },
   problem: {
     eyebrow: "El problema",
@@ -121,19 +141,24 @@ export const es = {
     cta: "Planificar mi optimización",
     items: [
       {
-        title: "Estructurar el negocio",
+        title: "Definir el negocio y los servicios",
         description:
-          "Aclarar servicios, audiencias, ubicaciones, entidades, pruebas y jerarquía de páginas para que el sitio tenga un modelo de información limpio."
+          "Aclarar servicios, audiencias, ubicaciones y jerarquía de páginas para que cada visitante entienda qué ofrece el negocio."
       },
       {
-        title: "Exponer señales legibles por máquinas",
+        title: "Añadir información legible por máquinas",
         description:
-          "Añadir Schema.org JSON-LD, metadata, bloques FAQ, contenido tipo respuesta, enlaces internos, sitemaps y rutas de rastreo claras."
+          "Añadir datos estructurados, metadata, respuestas útiles, enlaces internos y rutas de rastreo limpias que apoyen el descubrimiento moderno."
       },
       {
-        title: "Convertir claridad en leads",
+        title: "Consolidar confianza y pruebas",
         description:
-          "Mejorar flujo de página, llamadas a la acción, secciones de confianza, reservas, formularios, analítica y tracking de conversión."
+          "Reunir reseñas, experiencia, políticas, datos empresariales y ejemplos para que el negocio sea más fácil de verificar."
+      },
+      {
+        title: "Crear rutas claras hacia contacto o reserva",
+        description:
+          "Mejorar llamadas a la acción, reservas, formularios, navegación y medición para que los visitantes cualificados den el siguiente paso."
       }
     ]
   },
@@ -220,7 +245,7 @@ export const es = {
   },
   aiOptimization: {
     eyebrow: "Optimización IA",
-    title: "Qué incluye la optimización web con IA",
+    title: "Haz que tu negocio sea más fácil de entender",
     description:
       "El objetivo no es manipular herramientas de IA. El objetivo es hacer que el negocio sea más fácil de entender mejorando estructura, hechos, contenido, velocidad y confianza.",
     note:
@@ -236,6 +261,126 @@ export const es = {
       "Core Web Vitals",
       "Señales de confianza",
       "Información clara de empresa"
+    ]
+  },
+  visuals: {
+    audit: {
+      title: "Auditoría de visibilidad IA",
+      exampleLabel: "Ejemplo ilustrativo — los resultados varían según el sitio",
+      scoreLabel: "Puntuación de visibilidad IA",
+      issuesLabel: "problemas encontrados",
+      opportunitiesLabel: "oportunidades",
+      findingsTitle: "Hallazgos prioritarios",
+      findings: [
+        "Falta schema de servicios",
+        "Señales de ubicación poco claras",
+        "Enlazado interno débil",
+        "Descripciones empresariales inconsistentes"
+      ],
+      recommendationTitle: "Recomendación prioritaria",
+      recommendation: "Empezar por schema de servicios, claridad de ubicación y datos empresariales consistentes.",
+      beforeLabel: "Antes",
+      afterLabel: "Después de las mejoras",
+      summary: "Inspeccionamos el sitio, identificamos problemas concretos, aplicamos mejoras y comparamos la preparación antes y después."
+    },
+    website: {
+      label: "Ejemplo de sitio preparado para IA",
+      business: "Northline Advisory",
+      headline: "Orientación clara para crecer en Europa",
+      description: "Apoyo en entrada a mercados, cumplimiento y operaciones para equipos en expansión.",
+      servicesTitle: "Servicios",
+      services: ["Entrada a mercados", "Cumplimiento", "Operaciones"],
+      proof: "Información empresarial consistente en seis mercados europeos",
+      outcome: "Páginas de servicio claras crean más rutas de descubrimiento relevantes",
+      cta: "Reservar una consulta"
+    },
+    profile: {
+      inputTitle: "Contenido del sitio",
+      inputItems: ["Páginas de servicio", "Datos empresariales", "Reseñas y contacto"],
+      profileTitle: "Perfil empresarial estructurado",
+      fields: [
+        { label: "Empresa", value: "Northline Advisory" },
+        { label: "Servicios", value: "Consultoría de crecimiento" },
+        { label: "Ubicación", value: "Europa" },
+        { label: "Reseñas", value: "Fuentes verificadas" },
+        { label: "Contacto", value: "Claro y consistente" }
+      ],
+      outputTitle: "Comprensión en búsqueda e IA",
+      outcomes: ["Empresa identificada", "Servicios entendidos", "Ubicación verificada", "Lista para referenciar"],
+      codeLabel: "Detalle técnico: JSON-LD",
+      code: "{ @type: Organization, areaServed: Europe }",
+      summary: "Los datos empresariales claros apoyan el descubrimiento relevante y facilitan que buscadores y sistemas de IA interpreten la organización."
+    },
+    restaurant: {
+      label: "Ejemplo de transformación de restaurante",
+      exampleBadge: "Ejemplo ficticio",
+      imageAlt: "Interior cálido de un restaurante con plantas usado para un ejemplo ficticio.",
+      business: "Casa Oliva",
+      cuisine: "Cocina mediterránea",
+      location: "Jordaan, Ámsterdam",
+      rating: "4,8 · 286 reseñas",
+      hours: "Abierto hoy · 17:00–23:00",
+      menuTitle: "Popular esta noche",
+      menu: [
+        { name: "Crudo de lubina", price: "EUR 16" },
+        { name: "Berenjena asada", price: "EUR 14" },
+        { name: "Bizcocho de aceite", price: "EUR 9" }
+      ],
+      reserve: "Reservar una mesa",
+      discoveryTitle: "Recomendación gastronómica de IA",
+      query: "¿Dónde puedo reservar una cena mediterránea cerca de Jordaan?",
+      result: "Casa Oliva es un restaurante mediterráneo abierto en Jordaan con reservas disponibles esta noche.",
+      understood: ["Cocina entendida", "Ubicación verificada", "Horario y valoración visibles"],
+      outcome: "Información clara · ruta directa a la reserva",
+      photoCredit: "Foto de vnwayne en Unsplash"
+    }
+  },
+  discoveryStats: {
+    eyebrow: "Datos de descubrimiento",
+    title: "El descubrimiento está cambiando.\nAsegúrate de que tu negocio cambie con él.",
+    description: "La búsqueda, las respuestas de IA y los resultados estructurados están cambiando cómo los clientes descubren y evalúan empresas.",
+    sourceLabel: "Fuente",
+    items: [
+      {
+        metric: "5T+",
+        label: "Búsquedas en Google cada año",
+        statement: "Haz que tu empresa esté entre las que los clientes realmente descubren.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "2.5B+",
+        label: "Mensajes de ChatGPT cada día",
+        statement: "No dejes que las respuestas de IA excluyan tu experiencia.",
+        sourceName: "OpenAI",
+        sourceUrl: "https://openai.com/global-affairs/new-economic-analysis/",
+        disclaimer: ""
+      },
+      {
+        metric: "10%+",
+        label: "Más uso de Google Search en consultas con AI Overviews",
+        statement: "El comportamiento de búsqueda está cambiando. Tu sitio también debería cambiar.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "200+ / 40+",
+        label: "Países e idiomas con AI Overviews",
+        statement: "Construye una base de descubrimiento capaz de crecer en distintos mercados.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products-and-platforms/products/search/ai-overview-expansion-may-2025-update/",
+        disclaimer: ""
+      },
+      {
+        metric: "+25% CTR",
+        label: "En páginas mejoradas con datos estructurados",
+        statement: "Haz que tu resultado sea más fácil de ver y más fácil de elegir.",
+        sourceName: "Google Search Central",
+        sourceUrl: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+        disclaimer: "Caso de estudio de Rotten Tomatoes publicado por Google. No es un resultado de Web2Go. Los resultados no están garantizados."
+      }
     ]
   },
   process: {

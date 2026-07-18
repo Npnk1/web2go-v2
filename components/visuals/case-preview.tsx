@@ -1,60 +1,83 @@
-import { Check, MapPin } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Bot, Check, Clock3, MapPin, Search, Star } from "lucide-react";
+import type { Messages } from "@/i18n/types";
 
-type Project = {
-  industry: string;
-  title: string;
-  problem: string;
-  solution: string;
-  outcome: string;
-  tags: string[];
-};
-
-export function CasePreview({ project }: { project: Project }) {
+export function CasePreview({ copy }: { copy: Messages["visuals"]["restaurant"] }) {
   return (
-    <figure aria-label={project.title} className="overflow-hidden rounded-[14px] border border-ink-950/15 bg-white shadow-lift">
-      <div className="flex h-10 items-center gap-2 border-b border-ink-950/10 bg-paper px-4">
-        <span className="h-2.5 w-2.5 rounded-full bg-ink-950/20" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink-950/20" />
-        <span className="h-2.5 w-2.5 rounded-full bg-cobalt-500" />
-        <span className="ml-3 h-5 flex-1 rounded bg-white" />
+    <figure aria-label={copy.label} className="w-full min-w-0 overflow-hidden rounded-[14px] border border-ink-950/15 bg-white shadow-lift">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-950/10 bg-paper px-4 py-3">
+        <figcaption className="min-w-0 text-xs font-black uppercase tracking-[0.14em] text-cobalt-600">{copy.label}</figcaption>
+        <span className="rounded-full border border-ink-950/15 bg-white px-2.5 py-1 text-[10px] font-bold text-ink-600">{copy.exampleBadge}</span>
       </div>
-      <div className="grid min-h-[390px] lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="relative overflow-hidden bg-ink-950 p-6 text-white sm:p-9">
-          <div className="absolute inset-y-0 right-0 w-1/2 technical-grid opacity-20" />
-          <div className="relative max-w-lg">
-            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-cobalt-200"><MapPin className="h-4 w-4" aria-hidden="true" />{project.industry}</p>
-            <h3 className="mt-10 text-4xl font-semibold leading-tight sm:text-5xl">{project.title}</h3>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {project.tags.map((tag) => <span key={tag} className="rounded-full border border-white/20 px-3 py-1.5 text-xs text-white/75">{tag}</span>)}
+
+      <div className="grid w-full min-w-0 grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.18fr_0.82fr]">
+        <div className="min-w-0 border-b border-ink-950/10 lg:border-b-0 lg:border-r">
+          <div className="relative aspect-[4/3] min-h-0 overflow-hidden bg-ink-950 sm:aspect-[16/8.3] sm:min-h-52">
+            <Image
+              src="/images/example-restaurant.webp"
+              alt={copy.imageAlt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/15 to-transparent" aria-hidden="true" />
+            <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-acid">{copy.cuisine}</p>
+              <h3 className="mt-2 text-3xl font-semibold">{copy.business}</h3>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/85">
+                <span className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" aria-hidden="true" />{copy.location}</span>
+                <span className="flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-acid text-acid" aria-hidden="true" />{copy.rating}</span>
+                <span className="flex items-center gap-1.5"><Clock3 className="h-3.5 w-3.5" aria-hidden="true" />{copy.hours}</span>
+              </div>
             </div>
           </div>
-          <div className="relative mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {project.tags.map((tag, index) => (
-              <div key={tag} className={`min-h-24 rounded-md p-3 ${index === 0 ? "bg-cobalt-500" : index === 1 ? "bg-acid text-ink-950" : "bg-white text-ink-950"}`}>
-                <Check className="h-4 w-4" aria-hidden="true" />
-                <p className="mt-5 text-xs font-bold">{tag}</p>
-              </div>
+
+          <div className="grid gap-4 p-5 sm:grid-cols-[1fr_auto] sm:items-end sm:p-6">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-ink-600">{copy.menuTitle}</p>
+              <ul className="mt-3 grid gap-2">
+                {copy.menu.map((item) => (
+                  <li key={item.name} className="flex items-center justify-between gap-4 border-b border-ink-950/10 pb-2 text-xs">
+                    <span className="font-semibold text-ink-800">{item.name}</span>
+                    <span className="font-bold text-ink-950">{item.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <span className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-cobalt-500 px-4 py-2 text-xs font-bold text-white">
+              {copy.reserve}<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </span>
+          </div>
+        </div>
+
+        <div className="min-w-0 bg-cobalt-50 p-5 sm:p-6">
+          <div className="rounded-[12px] border border-cobalt-500/15 bg-white p-4 shadow-card">
+            <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.12em] text-cobalt-600"><Bot className="h-4 w-4" aria-hidden="true" />{copy.discoveryTitle}</p>
+            <div className="mt-4 rounded-md bg-canvas p-3 text-xs leading-5 text-ink-600">
+              <Search className="mb-2 h-4 w-4 text-cobalt-600" aria-hidden="true" />
+              “{copy.query}”
+            </div>
+            <div className="mt-3 border-l-2 border-cobalt-500 pl-3">
+              <p className="font-bold text-ink-950">{copy.business}</p>
+              <p className="mt-1 text-xs leading-5 text-ink-600">{copy.result}</p>
+            </div>
+          </div>
+
+          <ul className="mt-4 grid gap-2">
+            {copy.understood.map((item) => (
+              <li key={item} className="flex items-center gap-2 rounded-md border border-cobalt-500/15 bg-white px-3 py-2.5 text-xs font-semibold text-ink-700">
+                <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-acid text-ink-950"><Check className="h-3 w-3" aria-hidden="true" /></span>
+                {item}
+              </li>
             ))}
-          </div>
-        </div>
-        <div className="bg-cobalt-50 p-5 sm:p-7">
-          <div className="rounded-lg bg-white p-5 shadow-card">
-            <div className="h-2 w-16 rounded bg-cobalt-500" />
-            <div className="mt-5 h-4 w-4/5 rounded bg-ink-950" />
-            <div className="mt-2 h-4 w-2/3 rounded bg-ink-950" />
-            <div className="mt-6 aspect-[4/3] rounded-md bg-paper p-4">
-              <div className="grid h-full grid-cols-2 gap-3">
-                <div className="rounded bg-cobalt-100" />
-                <div className="grid gap-3">
-                  <div className="rounded bg-white" />
-                  <div className="rounded bg-acid" />
-                </div>
-              </div>
-            </div>
-            <div className="mt-5 h-8 w-28 rounded bg-cobalt-500" />
-          </div>
+          </ul>
+          <p className="mt-4 rounded-md bg-ink-950 px-4 py-3 text-xs font-bold text-white">{copy.outcome}</p>
         </div>
       </div>
+
+      <a href="https://unsplash.com/photos/restaurant-interior-xpzICNSaVUs" target="_blank" rel="noreferrer" className="block border-t border-ink-950/10 bg-canvas px-4 py-2 text-right text-[10px] text-ink-500 hover:text-cobalt-600">
+        {copy.photoCredit}
+      </a>
     </figure>
   );
 }

@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { ContactForm } from "@/components/contact-form";
+import { DiscoveryStats } from "@/components/discovery-stats";
+import { EmphasisText } from "@/components/emphasis-text";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { Header } from "@/components/header";
 import { HeroVisual } from "@/components/hero-visual";
@@ -43,13 +45,13 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
     <>
       <JsonLd locale={locale} messages={messages} />
       <Header locale={locale} copy={messages.navigation} />
-      <main id="top" className="overflow-hidden bg-paper">
+      <main id="top" className="overflow-x-clip bg-paper">
         <section className="px-5 pb-16 pt-32 sm:px-6 sm:pb-20 sm:pt-36 lg:px-8 lg:pb-16 lg:pt-32">
           <div className="mx-auto grid max-w-[var(--container)] items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
             <Reveal className="max-w-3xl">
               <p className="eyebrow">{messages.hero.eyebrow}</p>
               <h1 className="mt-7 text-balance text-5xl font-semibold leading-[0.98] text-ink-950 sm:text-6xl lg:text-[4.75rem]">
-                {messages.hero.title}
+                <EmphasisText text={messages.hero.title} emphasis={messages.emphasis.hero} />
               </h1>
               <p className="mt-7 max-w-xl text-pretty text-lg leading-8 text-ink-600 sm:text-xl">
                 {messages.hero.description}
@@ -90,14 +92,14 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
         <section className="section-shell" id="services">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.services.eyebrow} title={messages.services.title} description={messages.services.description} align="left" number="01" />
+              <SectionHeading eyebrow={messages.services.eyebrow} title={messages.services.title} description={messages.services.description} emphasis={messages.emphasis.services} align="left" number="01" />
             </Reveal>
-            <div className="mt-14 border-t border-ink-950/15">
+            <div className="mt-12 border-t border-ink-950/15">
               {serviceDefinitions.map((definition, position) => {
                 const service = messages.services.cards[definition.index];
                 return (
                   <Reveal key={definition.slug}>
-                    <article className="grid gap-8 border-b border-ink-950/15 py-12 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-20">
+                    <article className="grid gap-8 border-b border-ink-950/15 py-10 lg:grid-cols-2 lg:items-center lg:gap-14 lg:py-14">
                       <div className={position % 2 === 1 ? "lg:order-2" : ""}>
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-cobalt-500">0{position + 1}</p>
                         <h3 className="mt-5 text-4xl font-semibold leading-tight text-ink-950 sm:text-5xl">{service.title}</h3>
@@ -116,7 +118,7 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
                         </Link>
                       </div>
                       <div className={position % 2 === 1 ? "lg:order-1" : ""}>
-                        <ServiceScene service={service} type={definition.type} />
+                        <ServiceScene service={service} type={definition.type} copy={messages.visuals} />
                       </div>
                     </article>
                   </Reveal>
@@ -129,9 +131,9 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
         <section className="section-shell bg-canvas" id="transformation">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.solution.eyebrow} title={messages.solution.title} description={messages.solution.description} align="left" number="02" />
+              <SectionHeading eyebrow={messages.solution.eyebrow} title={messages.solution.title} description={messages.solution.description} emphasis={messages.emphasis.solution} align="left" number="02" />
             </Reveal>
-            <Reveal delay={100} className="mt-14">
+            <Reveal delay={100} className="mt-10 sm:mt-12">
               <Transformation problem={messages.problem} solution={messages.solution} />
             </Reveal>
           </div>
@@ -140,22 +142,22 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
         <section className="section-shell bg-ink-900" id="ai-optimization">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.aiOptimization.eyebrow} title={messages.aiOptimization.title} description={messages.aiOptimization.description} align="left" tone="dark" number="03" />
+              <SectionHeading eyebrow={messages.aiOptimization.eyebrow} title={messages.aiOptimization.title} description={messages.aiOptimization.description} emphasis={messages.emphasis.aiOptimization} align="left" tone="dark" number="03" />
             </Reveal>
             <Reveal delay={100}>
-              <VisibilityFlow copy={messages.aiOptimization} heroVisual={messages.heroVisual} />
+              <VisibilityFlow visuals={messages.visuals} />
             </Reveal>
           </div>
         </section>
 
-        <section className="section-shell" id="work">
+        <section className="section-shell py-20 sm:py-24 lg:py-28" id="work">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.work.eyebrow} title={messages.work.title} description={messages.work.description} align="left" number="04" />
+              <SectionHeading eyebrow={messages.work.eyebrow} title={messages.work.title} description={messages.work.description} emphasis={messages.emphasis.work} align="left" number="04" />
             </Reveal>
-            <div className="mt-14 grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-              <Reveal>
-                <article>
+            <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+              <Reveal className="min-w-0">
+                <article className="min-w-0">
                   <span className="inline-flex rounded-full border border-ink-950/15 bg-white px-3 py-1.5 text-xs font-semibold text-ink-700">{messages.work.projects[0].industry}</span>
                   <h3 className="mt-6 text-3xl font-semibold leading-tight text-ink-950">{messages.work.projects[0].title}</h3>
                   <dl className="mt-8 space-y-6 text-sm leading-7 text-ink-600">
@@ -165,32 +167,21 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
                   </dl>
                 </article>
               </Reveal>
-              <Reveal delay={100}>
-                <CasePreview project={messages.work.projects[0]} />
+              <Reveal delay={100} className="min-w-0">
+                <CasePreview copy={messages.visuals.restaurant} />
               </Reveal>
             </div>
           </div>
         </section>
 
-        <section className="bg-cobalt-500 px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8" aria-label={messages.heroVisual.scoreLabel}>
-          <div className="mx-auto grid max-w-[var(--container)] grid-cols-2 gap-px overflow-hidden rounded-[12px] bg-white/25 lg:grid-cols-4">
-            {[...messages.heroVisual.metrics, { label: messages.heroVisual.scoreLabel, value: "82/100" }].map((metric, index) => (
-              <div key={metric.label} className="min-h-40 bg-cobalt-500 p-5 sm:p-7">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt-100">0{index + 1}</p>
-                <p className="mt-8 text-4xl font-semibold sm:text-5xl">{metric.value}</p>
-                <p className="mt-3 text-sm text-cobalt-100">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mx-auto mt-5 max-w-[var(--container)] text-xs text-cobalt-100">{messages.work.description}</p>
-        </section>
+        <DiscoveryStats copy={messages.discoveryStats} />
 
         <section className="section-shell bg-canvas" id="process">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.process.eyebrow} title={messages.process.title} description={messages.process.description} align="left" number="05" />
+              <SectionHeading eyebrow={messages.process.eyebrow} title={messages.process.title} description={messages.process.description} emphasis={messages.emphasis.process} align="left" number="05" />
             </Reveal>
-            <div className="relative mt-14 grid gap-0 lg:grid-cols-4">
+            <div className="relative mt-12 grid gap-0 lg:grid-cols-4">
               <div className="absolute left-0 right-0 top-7 hidden h-px bg-ink-950/20 lg:block" aria-hidden="true" />
               {processSteps.map((step, index) => (
                 <Reveal key={step.title} delay={index * 80}>
@@ -231,7 +222,7 @@ export function HomePage({ locale, messages }: { locale: Locale; messages: Messa
         <section className="section-shell bg-canvas" id="pricing">
           <div className="mx-auto max-w-[var(--container)]">
             <Reveal>
-              <SectionHeading eyebrow={messages.pricing.eyebrow} title={messages.pricing.title} description={messages.pricing.description} align="left" number="06" />
+              <SectionHeading eyebrow={messages.pricing.eyebrow} title={messages.pricing.title} description={messages.pricing.description} emphasis={messages.emphasis.pricing} align="left" number="06" />
             </Reveal>
             <div className="mt-14 grid gap-4 lg:grid-cols-3">
               {messages.pricing.tiers.map((tier, index) => (

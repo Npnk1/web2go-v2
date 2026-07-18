@@ -18,7 +18,7 @@ export function ServicePage({ locale, messages, definition }: { locale: Locale; 
   return (
     <>
       <Header locale={locale} copy={messages.navigation} />
-      <main className="overflow-hidden bg-paper">
+      <main className="overflow-x-clip bg-paper">
         <section className="px-5 pb-20 pt-32 sm:px-6 sm:pt-40 lg:px-8 lg:pb-28">
           <div className="mx-auto grid max-w-[var(--container)] gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-16">
             <Reveal>
@@ -30,13 +30,13 @@ export function ServicePage({ locale, messages, definition }: { locale: Locale; 
                 <a href={homeHash("#services")} className="btn-secondary">{messages.hero.secondaryCta}</a>
               </div>
             </Reveal>
-            <Reveal delay={100}><ServiceScene service={service} type={definition.type} /></Reveal>
+            <Reveal delay={100}><ServiceScene service={service} type={definition.type} copy={messages.visuals} /></Reveal>
           </div>
         </section>
 
         <section className="section-shell bg-canvas">
           <div className="mx-auto grid max-w-[var(--container)] gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-            <Reveal><SectionHeading eyebrow={messages.services.includesLabel} title={messages.aiOptimization.title} description={messages.aiOptimization.description} align="left" number="01" /></Reveal>
+            <Reveal><SectionHeading eyebrow={messages.services.includesLabel} title={messages.aiOptimization.title} description={messages.aiOptimization.description} emphasis={messages.emphasis.aiOptimization} align="left" number="01" /></Reveal>
             <Reveal delay={80}>
               <div className="border-t border-ink-950/15">
                 {[...service.bullets, ...messages.aiOptimization.includes.slice(definition.index % 4, definition.index % 4 + 3)].map((item, index) => (
@@ -52,14 +52,14 @@ export function ServicePage({ locale, messages, definition }: { locale: Locale; 
 
         <section className="section-shell bg-ink-900">
           <div className="mx-auto max-w-[var(--container)]">
-            <Reveal><SectionHeading eyebrow={messages.aiOptimization.eyebrow} title={messages.solution.title} description={messages.solution.description} align="left" tone="dark" number="02" /></Reveal>
-            <Reveal delay={80}><VisibilityFlow copy={messages.aiOptimization} heroVisual={messages.heroVisual} /></Reveal>
+            <Reveal><SectionHeading eyebrow={messages.aiOptimization.eyebrow} title={messages.solution.title} description={messages.solution.description} emphasis={messages.emphasis.solution} align="left" tone="dark" number="02" /></Reveal>
+            <Reveal delay={80}><VisibilityFlow visuals={messages.visuals} /></Reveal>
           </div>
         </section>
 
         <section className="section-shell">
           <div className="mx-auto max-w-[var(--container)]">
-            <Reveal><SectionHeading eyebrow={messages.process.eyebrow} title={messages.process.title} description={messages.process.description} align="left" number="03" /></Reveal>
+            <Reveal><SectionHeading eyebrow={messages.process.eyebrow} title={messages.process.title} description={messages.process.description} emphasis={messages.emphasis.process} align="left" number="03" /></Reveal>
             <div className="mt-14 grid border-y border-ink-950/15 lg:grid-cols-4">
               {processSteps.map((step, index) => (
                 <Reveal key={step.title} delay={index * 70}>
@@ -92,7 +92,7 @@ export function ServicePage({ locale, messages, definition }: { locale: Locale; 
 
         <section className="section-shell bg-canvas">
           <div className="mx-auto max-w-[var(--container)]">
-            <Reveal><SectionHeading eyebrow={messages.services.eyebrow} title={messages.services.title} description={messages.services.description} align="left" number="04" /></Reveal>
+            <Reveal><SectionHeading eyebrow={messages.services.eyebrow} title={messages.services.title} description={messages.services.description} emphasis={messages.emphasis.services} align="left" number="04" /></Reveal>
             <div className="mt-12 grid gap-4 md:grid-cols-3">
               {serviceDefinitions.filter((item) => item.slug !== definition.slug).map((item) => {
                 const related = messages.services.cards[item.index];

@@ -44,6 +44,17 @@ export const nl = {
       { label: "Contact", href: "#contact" }
     ]
   },
+  emphasis: {
+    hero: "vinden, vertrouwen en begrijpen",
+    services: "website te versterken",
+    solution: "Duidelijke structuur",
+    aiOptimization: "makkelijker te begrijpen",
+    work: "eerlijk getoond",
+    process: "audit naar lancering",
+    pricing: "Praktische startpunten",
+    faq: "duidelijke antwoorden",
+    contact: "website verbeteren"
+  },
   hero: {
     eyebrow: "AI-zichtbaarheid op een sterke basis",
     title: "Maak je website makkelijker te vinden, vertrouwen en begrijpen.",
@@ -83,7 +94,16 @@ export const nl = {
       "Interne links sturen crawlers en gekwalificeerde bezoekers",
       "Bewijs, beleid en contactpaden zijn makkelijk te verifieren"
     ],
-    channels: ["Google Zoeken", "ChatGPT", "AI-zoeken", "Klanten"]
+    channels: ["Google Zoeken", "ChatGPT", "AI-zoeken", "Klanten"],
+    preview: {
+      business: "Northline Advisory",
+      category: "Europees groeiadvies",
+      headline: "Duidelijk advies voor Europese groei",
+      description: "Ondersteuning bij markttoegang, compliance en operations voor groeiende teams.",
+      services: ["Markttoegang", "Compliance", "Operations"],
+      cta: "Plan een gesprek",
+      outcome: "Heldere bedrijfsfeiten · direct contactpad"
+    }
   },
   problem: {
     eyebrow: "Het probleem",
@@ -121,19 +141,24 @@ export const nl = {
     cta: "Plan mijn optimalisatie",
     items: [
       {
-        title: "Structureer het bedrijf",
+        title: "Definieer het bedrijf en de diensten",
         description:
-          "Verduidelijk diensten, doelgroepen, locaties, entiteiten, bewijspunten en pagina-hierarchie zodat de website een schoon informatiemodel heeft."
+          "Verduidelijk diensten, doelgroepen, locaties en paginahiërarchie zodat elke bezoeker begrijpt wat het bedrijf aanbiedt."
       },
       {
-        title: "Maak machineleesbare signalen zichtbaar",
+        title: "Voeg machineleesbare informatie toe",
         description:
-          "Voeg Schema.org JSON-LD, metadata, FAQ-blokken, antwoordgerichte content, interne links, sitemaps en schone crawl-paden toe."
+          "Voeg structured data, metadata, nuttige antwoorden, interne links en schone crawlpaden toe die moderne vindbaarheid ondersteunen."
       },
       {
-        title: "Zet duidelijkheid om in leads",
+        title: "Bundel vertrouwen en bewijs",
         description:
-          "Verbeter paginastroom, calls-to-action, vertrouwen, boekingspaden, formulieren, analytics en conversietracking."
+          "Breng reviews, expertise, beleid, bedrijfsdetails en voorbeelden samen zodat het bedrijf makkelijker te verifiëren is."
+      },
+      {
+        title: "Maak duidelijke routes naar contact of boeking",
+        description:
+          "Verbeter calls-to-action, boekingspaden, formulieren, navigatie en meting zodat gekwalificeerde bezoekers de volgende stap kunnen zetten."
       }
     ]
   },
@@ -220,7 +245,7 @@ export const nl = {
   },
   aiOptimization: {
     eyebrow: "AI-optimalisatie",
-    title: "Wat AI-websiteoptimalisatie inhoudt",
+    title: "Maak je bedrijf makkelijker te begrijpen",
     description:
       "Het doel is niet om AI-tools te manipuleren. Het doel is het bedrijf makkelijker te begrijpen maken door structuur, feiten, content, snelheid en vertrouwen te verbeteren.",
     note:
@@ -236,6 +261,126 @@ export const nl = {
       "Core Web Vitals",
       "Vertrouwenssignalen",
       "Heldere bedrijfsinformatie"
+    ]
+  },
+  visuals: {
+    audit: {
+      title: "AI-zichtbaarheidsaudit",
+      exampleLabel: "Illustratief voorbeeld — resultaten verschillen per website",
+      scoreLabel: "AI-zichtbaarheidsscore",
+      issuesLabel: "problemen gevonden",
+      opportunitiesLabel: "kansen",
+      findingsTitle: "Belangrijkste bevindingen",
+      findings: [
+        "Serviceschema ontbreekt",
+        "Locatiesignalen zijn onduidelijk",
+        "Interne links zijn zwak",
+        "Bedrijfsbeschrijvingen zijn inconsistent"
+      ],
+      recommendationTitle: "Prioriteitsadvies",
+      recommendation: "Begin met serviceschema, locatiehelderheid en consistente bedrijfsfeiten.",
+      beforeLabel: "Voor",
+      afterLabel: "Na verbeteringen",
+      summary: "We inspecteren de website, vinden concrete problemen, voeren verbeteringen door en vergelijken de gereedheid voor en na."
+    },
+    website: {
+      label: "Voorbeeld van een AI-ready website",
+      business: "Northline Advisory",
+      headline: "Duidelijk advies voor Europese groei",
+      description: "Ondersteuning bij markttoegang, compliance en operations voor groeiende teams.",
+      servicesTitle: "Diensten",
+      services: ["Markttoegang", "Compliance", "Operations"],
+      proof: "Consistente bedrijfsinformatie in zes Europese markten",
+      outcome: "Heldere servicepagina's creëren meer relevante vindroutes",
+      cta: "Plan een gesprek"
+    },
+    profile: {
+      inputTitle: "Websitecontent",
+      inputItems: ["Servicepagina's", "Bedrijfsfeiten", "Reviews en contactgegevens"],
+      profileTitle: "Gestructureerd bedrijfsprofiel",
+      fields: [
+        { label: "Bedrijf", value: "Northline Advisory" },
+        { label: "Diensten", value: "Groeiondersteuning" },
+        { label: "Locatie", value: "Europa" },
+        { label: "Reviews", value: "Geverifieerde bronnen" },
+        { label: "Contact", value: "Duidelijk en consistent" }
+      ],
+      outputTitle: "Begrip door zoeken en AI",
+      outcomes: ["Bedrijf herkend", "Diensten begrepen", "Locatie geverifieerd", "Klaar om te refereren"],
+      codeLabel: "Technisch detail: JSON-LD",
+      code: "{ @type: Organization, areaServed: Europe }",
+      summary: "Heldere bedrijfsfeiten ondersteunen relevante vindbaarheid en maken de organisatie makkelijker te interpreteren voor zoek- en AI-systemen."
+    },
+    restaurant: {
+      label: "Voorbeeld restauranttransformatie",
+      exampleBadge: "Fictief voorbeeld",
+      imageAlt: "Warm restaurantinterieur met veel planten voor een fictief restaurantvoorbeeld.",
+      business: "Casa Oliva",
+      cuisine: "Mediterrane keuken",
+      location: "Jordaan, Amsterdam",
+      rating: "4,8 · 286 reviews",
+      hours: "Vandaag open · 17:00–23:00",
+      menuTitle: "Populair vanavond",
+      menu: [
+        { name: "Zeebaarscrudo", price: "EUR 16" },
+        { name: "Geroosterde aubergine", price: "EUR 14" },
+        { name: "Olijfoliecake", price: "EUR 9" }
+      ],
+      reserve: "Reserveer een tafel",
+      discoveryTitle: "AI-restaurantaanbeveling",
+      query: "Waar kan ik Mediterraan dineren en boeken in de Jordaan?",
+      result: "Casa Oliva is een geopend Mediterraan restaurant in de Jordaan waar vanavond tafels gereserveerd kunnen worden.",
+      understood: ["Keuken begrepen", "Locatie geverifieerd", "Openingstijden en beoordeling zichtbaar"],
+      outcome: "Heldere informatie · directe route naar reservering",
+      photoCredit: "Foto door vnwayne op Unsplash"
+    }
+  },
+  discoveryStats: {
+    eyebrow: "Discovery in cijfers",
+    title: "Discovery verandert.\nZorg dat je bedrijf mee verandert.",
+    description: "Zoeken, AI-antwoorden en gestructureerde resultaten veranderen hoe klanten bedrijven ontdekken en beoordelen.",
+    sourceLabel: "Bron",
+    items: [
+      {
+        metric: "5T+",
+        label: "Google-zoekopdrachten per jaar",
+        statement: "Zorg dat jouw bedrijf behoort tot de bedrijven die klanten daadwerkelijk ontdekken.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "2.5B+",
+        label: "ChatGPT-berichten per dag",
+        statement: "Laat AI-antwoorden jouw expertise niet buiten beeld houden.",
+        sourceName: "OpenAI",
+        sourceUrl: "https://openai.com/global-affairs/new-economic-analysis/",
+        disclaimer: ""
+      },
+      {
+        metric: "10%+",
+        label: "Meer gebruik van Google Search bij zoekopdrachten met AI Overviews",
+        statement: "Zoekgedrag verandert. Je website moet mee veranderen.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products/ads-commerce/google-search-ai-brand-discovery/",
+        disclaimer: ""
+      },
+      {
+        metric: "200+ / 40+",
+        label: "Landen en talen met AI Overviews",
+        statement: "Bouw een discoveryfundament dat met meerdere markten kan meegroeien.",
+        sourceName: "Google",
+        sourceUrl: "https://blog.google/products-and-platforms/products/search/ai-overview-expansion-may-2025-update/",
+        disclaimer: ""
+      },
+      {
+        metric: "+25% CTR",
+        label: "Op pagina's verbeterd met gestructureerde data",
+        statement: "Maak je resultaat makkelijker op te merken—en makkelijker te kiezen.",
+        sourceName: "Google Search Central",
+        sourceUrl: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+        disclaimer: "Rotten Tomatoes-case study gerapporteerd door Google. Geen Web2Go-resultaat. Resultaten zijn niet gegarandeerd."
+      }
     ]
   },
   process: {
